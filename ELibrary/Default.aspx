@@ -303,7 +303,7 @@
             <div class="unit-4 d-flex">
               <div class="unit-4-icon mr-4"><span class="text-primary flaticon-house"></span></div>
               <div>
-                <h3>Search Property</h3>
+                <h3>Search Propermkdas;dty</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
                 <p><a href="#">Learn More</a></p>
               </div>
