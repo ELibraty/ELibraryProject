@@ -8,7 +8,10 @@
       <div class="container">
         <div class="row mb-5 justify-content-center">
           <div class="col-md-7 text-center">
-            <h2 class="section-title mb-3">How It Works</h2>
+            <h2 class="section-title mb-3">
+                How It Works</h2>
+              <input id="btnGetTime" type="button" value="Show Current Time"
+     onclick = "ShowCurrentTime()" />
               <button onclick="a()">a()</button>
               <div id="app">
                 {{ message }}
@@ -303,7 +306,7 @@
             <div class="unit-4 d-flex">
               <div class="unit-4-icon mr-4"><span class="text-primary flaticon-house"></span></div>
               <div>
-                <h3>Search Propermkdas;dty</h3>
+                <h3>Search Property</h3>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis quis molestiae vitae eligendi at.</p>
                 <p><a href="#">Learn More</a></p>
               </div>
@@ -468,6 +471,7 @@
               <div class="meta mb-4">James Phelps <span class="mx-2">&bullet;</span> Jan 18, 2019<span class="mx-2">&bullet;</span> <a href="single.html">News</a></div>
             </div>
           </div>
+                             
 
         </div>
       </div>
@@ -479,46 +483,92 @@
 
     <div class="container">
         <div class="modal fade" id="appRegesterPerson" role="dialog">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h4 class="modal-title">
-                            Регистиране на нов потребител
-                        </h4>
-                        <button type="button" class="close" data-dismiss="modal" v-on:click="exitMessage()">&times;</button>
-                    </div>
-
-                    <div class="modal-body scroow">
-
-                        <div class="form-group row">
-                            <label class="text-black col-md-3 control-label " for="email">Email:</label>
-                            <input v-model="personData.email"  type="email" class="form-control col-md-9"/>
+           <asp:ScriptManager ID="ScriptManager1" runat="server"> </asp:ScriptManager>
+           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+                <ContentTemplate>
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                Регистиране на нов потребител
+                            </h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
 
-                        <div class="form-group row">
-                            <label class="text-black col-md-3 control-label" for="txtUserName">Потребителско име:</label><br />
-                            <input v-model="personData.userName"  type="email" class="form-control col-md-9"/>
-                        </div>
+                        <div class="modal-body scroow">
+                            <div class="form-group row">
+                                <asp:Label class="text-black col-md-3 control-label" id="lblFailedRegistrationMessage" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
 
-                        <div class="form-group row">
-                            <label class="text-black col-md-3 control-label" for="txtPassword">Парола:</label><br />
-                            <input v-model="personData.password"  type="email" class="form-control col-md-9" />  
-                        </div>
+                            </div>
+                            <div class="form-group row">
+                               <asp:Label class="col-md-3" id="lblSuccessfulRegistrationMessage" runat="server" Text="" ForeColor="Green" Visible="false"></asp:Label>
+                            </div>
+                           
+                            <div class="form-group row">
+                                <label class="text-black col-md-3 control-label " for="email">Email:</label>
+                                <asp:TextBox id="txtEmailRegistartion"  type="text" class="form-control col-md-9" runat="server"></asp:TextBox>
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="text-black col-md-3 control-label" for="txtUserName">Потребителско име:</label><br />
+                                <asp:TextBox id="txtUserNameRegistartion"  type="text" class="form-control col-md-9" runat="server"></asp:TextBox>
+
+                            </div>
+
+                            <div class="form-group row">
+                                <label class="text-black col-md-3 control-label" for="txtPassword">Парола:</label><br />
+                                <asp:TextBox id="txtPasswordRegistartion"  type="password" class="form-control col-md-9" runat="server"></asp:TextBox>
+
+                            </div>
                        
-                        <div class="form-group row">
-                            <label class="text-black col-md-3 control-label" for="txtPassword">Повтори парола:</label><br />
-                            <input v-model="personData.confirmPassword"  type="email" class="form-control col-md-9"/>
-                        </div>       
-                       
-                    </div>
+                            <div class="form-group row">
+                                <label class="text-black col-md-3 control-label" for="txtPassword">Повтори парола:</label><br />
+                                <asp:TextBox id="txtConfirmPasswordRegistartion"  type="password" class="form-control col-md-9" runat="server"></asp:TextBox>
+                            </div>                       
+                        </div>
 
 
-                    <div class="modal-footer container">
-                        <button v-on:click="registrationPerson()" class="btn btn-primary btn-block col-md-3" >Регистрирай се</button>
-                    </div>
+                        <div class="modal-footer container">
+                          <asp:Button ID="btnRegestrationPerson" runat="server" Text="Регистирай" class="btn btn-primary btn-block col-md-3" OnClick="btnRegestrationPerson_Click"/>
+                        </div>
+                    </div>                    
                 </div>
-            </div>
-        </div>
+              </ContentTemplate>
+            </asp:UpdatePanel>
+         </div>
     </div>
-    <script src="JSForPages/Default.js"></script>
+
+     <div class="container">
+        <div class="modal fade" id="appLogInPerson" role="dialog">
+           <asp:UpdatePanel ID="UpdatePanel2" runat="server">
+                <ContentTemplate>
+                  <div class="modal-dialog modal-lg">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title">
+                                Влизане в профила
+                            </h4>
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        </div>
+
+                        <div class="modal-body scroow">
+
+                            <div class="form-group row">
+                                <label class="text-black col-md-3 control-label " for="email">Email:</label>
+                                <input id="txtEmailLogIn"  type="email" class="form-control col-md-9"/>
+                            </div>                     
+                        </div>
+
+
+                        <div class="modal-footer container">
+                       
+                             <asp:Button ID="Button1" runat="server" Text="Регистирай" class="btn btn-primary btn-block col-md-3"/>
+
+                        </div>
+                    </div>                    
+                </div>
+              </ContentTemplate>
+            </asp:UpdatePanel>
+         </div>
+    </div>
 </asp:Content>

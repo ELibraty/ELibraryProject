@@ -198,7 +198,6 @@
     <Content Include="images\slide_2.jpg" />
     <Content Include="images\slide_3.jpg" />
     <Content Include="images\slide_4.jpg" />
-    <Content Include="JSForPages\Default.js" />
     <Content Include="js\aos.js" />
     <Content Include="js\bootstrap-datepicker.min.js" />
     <Content Include="js\bootstrap.min.js" />
