@@ -52,7 +52,8 @@ namespace ELibrary
             string confirmPassword = txtConfirmPasswordRegistartion.Text.Trim();
 
             RegistrationClass registrationPerson = new RegistrationClass(userName, password, confirmPassword, email);
-            lblSuccessfulRegistrationMessage.Text = "hi";
+           
+             lblSuccessfulRegistrationMessage.Text = registrationPerson.RegistrationPerson();
             lblSuccessfulRegistrationMessage.Visible = true;
 
 

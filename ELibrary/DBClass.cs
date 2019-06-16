@@ -10,25 +10,22 @@ namespace ELibrary
     {
         private SqlConnection sqlCon;
 
-        public SqlConnection SqlCon { get => sqlCon; set => sqlCon = value; }
+        public SqlConnection SqlCon { get => sqlCon; private set => sqlCon = value; }
 
         public DBClass()
         {
             string connectionString = "Server=.\\SQLEXPRESS; Database=LibraryDB; Integrated Security=true ";
-            SqlConnection sqlCon = new SqlConnection(connectionString);
-            this.SqlCon = sqlCon;
+            this.SqlCon = new SqlConnection(connectionString);
         }
 
         //To Do: Insert query at DB
         public void InsertQueryAtDB(string query)
         {
             SqlConnection sqlCon = this.SqlCon;
+            sqlCon.Open();
             SqlCommand command = new SqlCommand(query, sqlCon);
-            using (sqlCon)
-            {
-                sqlCon.Open();
-                command.ExecuteNonQuery();
-            }
+            command.ExecuteNonQuery();
+            sqlCon.Close();
 
         }
 
@@ -36,21 +33,19 @@ namespace ELibrary
         {
             string query = $"Select Max(id) from {dataTable};";
             DataTable dtbl = SelectQueryFromDB(query);
-            int id =int.Parse(dtbl.Rows[0].ItemArray[0].ToString())+1;
-            
-            return id;
+            string lastId = dtbl.Rows[0][0].ToString();
+            if (lastId == "") return 1;
+            return int.Parse(lastId) +1;
         }
 
         public DataTable SelectQueryFromDB(string query)
         {
             DataTable dtbl = new DataTable();
             SqlConnection sqlCon = this.SqlCon;
-            using (sqlCon)
-            {
-                sqlCon.Open();
-                SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
-                sqlDa.Fill(dtbl);
-            }
+            sqlCon.Open();
+            SqlDataAdapter sqlDa = new SqlDataAdapter(query, sqlCon);
+            sqlDa.Fill(dtbl);
+            sqlCon.Close();
             return dtbl;
         }
 

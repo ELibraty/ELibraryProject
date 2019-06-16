@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using System.Data;
 
 namespace ELibrary
 {
@@ -40,22 +41,50 @@ namespace ELibrary
 
         public string RegistrationPerson()
         {
-            string userName = this.UserName;
-            string password = this.Password;
-            string email = this.Email;
-            string confirmPasswords = this.ConfirmPasswords;
+            try
+            {
+                string userName = this.UserName;
+                string password = this.Password;
+                string email = this.Email;
+                string confirmPasswords = this.ConfirmPasswords;
 
-            DBClass db = new DBClass();
-            int id = db.GetMaxID("dbo.Users");
-
-            string query = $"INSERT INTO dbo.Users (id,email, user_name, password, type) " +
+                DBClass db = new DBClass();
+                int id = db.GetMaxID("dbo.Users");
+                if(this.CheckDublicatePersonData()== false)
+                {
+                    string query = $"INSERT INTO Users (id,email, user_name, password, type) " +
                     $"VALUES ('{id}','{email}', '{userName}', '{password}','user' )";
-            db.InsertQueryAtDB(query);
+                    db.InsertQueryAtDB(query);
+                    return "Успешно регистриран сте!";
+                }
+                else
+                {
+                    return "Добликиране на email/потребителско име!";
+                }
 
+            }
+            catch (Exception)
+            {
 
-            return "Успошно регистриран!";
+                throw;
+            }
+            
         }
 
+        private bool CheckDublicatePersonData()
+        {
+            string userName = this.UserName;
+            string email = this.Email;
+
+            DBClass db = new DBClass();
+            string query = $"Select* from Users where email='{email}' or user_name='{userName}', password, type);";
+            db.SelectQueryFromDB(query);
+            DataTable dtbl = db.SelectQueryFromDB(query);
+            string lastId = dtbl.Rows[0][0].ToString();
+            if (lastId == "") return false;
+            return true;
+
+        }
 
     }
 }

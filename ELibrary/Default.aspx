@@ -506,24 +506,24 @@
                            
                             <div class="form-group row">
                                 <label class="text-black col-md-3 control-label " for="email">Email:</label>
-                                <asp:TextBox id="txtEmailRegistartion"  type="text" class="form-control col-md-9" runat="server"></asp:TextBox>
+                                <asp:TextBox id="txtEmailRegistartion"  type="text" class="form-control col-md-9" runat="server">dim_kolev2002@abv.bg</asp:TextBox>
                             </div>
 
                             <div class="form-group row">
                                 <label class="text-black col-md-3 control-label" for="txtUserName">Потребителско име:</label><br />
-                                <asp:TextBox id="txtUserNameRegistartion"  type="text" class="form-control col-md-9" runat="server"></asp:TextBox>
+                                <asp:TextBox id="txtUserNameRegistartion"  type="text" class="form-control col-md-9" runat="server">sda</asp:TextBox>
 
                             </div>
 
                             <div class="form-group row">
                                 <label class="text-black col-md-3 control-label" for="txtPassword">Парола:</label><br />
-                                <asp:TextBox id="txtPasswordRegistartion"  type="password" class="form-control col-md-9" runat="server"></asp:TextBox>
+                                <asp:TextBox id="txtPasswordRegistartion"  type="password" class="form-control col-md-9" runat="server">a</asp:TextBox>
 
                             </div>
                        
                             <div class="form-group row">
                                 <label class="text-black col-md-3 control-label" for="txtPassword">Повтори парола:</label><br />
-                                <asp:TextBox id="txtConfirmPasswordRegistartion"  type="password" class="form-control col-md-9" runat="server"></asp:TextBox>
+                                <asp:TextBox id="txtConfirmPasswordRegistartion"  type="password" class="form-control col-md-9" runat="server">a</asp:TextBox>
                             </div>                       
                         </div>
 
