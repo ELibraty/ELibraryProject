@@ -10,12 +10,12 @@
           <div class="col-md-7 text-center">
             <h2 class="section-title mb-3">
                 How It Works</h2>
-              <input id="btnGetTime" type="button" value="Show Current Time"
-     onclick = "ShowCurrentTime()" />
-              <button onclick="a()">a()</button>
-              <div id="app">
-                {{ message }}
-              </div>
+              
+
+<asp:RegularExpressionValidator ID="rev1" runat="server" 
+ControlToValidate="txtPassword"
+ErrorMessage="Password must contain: Minimum 8 and Maximum 10 characters atleast 1 UpperCase Alphabet, 1 LowerCase Alphabet, 1 Number and 1 Special Character"
+ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,10}"/>
           </div>
         </div>
         <div class="row">
@@ -24,6 +24,8 @@
               <span class="custom-icon flaticon-house text-primary"></span>
               <h3 class="text-dark">Find Property.</h3>
               <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+                
+                
             </div>
           </div>
 
@@ -497,34 +499,48 @@
 
                         <div class="modal-body scroow">
                             <div class="form-group row">
-                                <asp:Label class="text-black col-md-3 control-label" id="lblFailedRegistrationMessage" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
+                                <asp:Label id="lblFailedRegistrationMessage" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
 
-                            </div>
-                            <div class="form-group row">
-                               <asp:Label class="col-md-3" id="lblSuccessfulRegistrationMessage" runat="server" Text="" ForeColor="Green" Visible="false"></asp:Label>
+                                <asp:Label  id="lblSuccessfulRegistrationMessage" runat="server" Text="" ForeColor="Green" Visible="false"></asp:Label>
                             </div>
                            
                             <div class="form-group row">
-                                <label class="text-black col-md-3 control-label " for="email">Email:</label>
+                                <label class="text-black col-md-3 control-label " for="email">Email:*</label>
                                 <asp:TextBox id="txtEmailRegistartion"  type="text" class="form-control col-md-9" runat="server">dim_kolev2002@abv.bg</asp:TextBox>
                             </div>
 
                             <div class="form-group row">
-                                <label class="text-black col-md-3 control-label" for="txtUserName">Потребителско име:</label><br />
+                                <label class="text-black col-md-3 control-label" for="txtUserName">Потребителско име:*</label><br />
                                 <asp:TextBox id="txtUserNameRegistartion"  type="text" class="form-control col-md-9" runat="server">sda</asp:TextBox>
 
                             </div>
 
                             <div class="form-group row">
-                                <label class="text-black col-md-3 control-label" for="txtPassword">Парола:</label><br />
+                                <label class="text-black col-md-3 control-label" for="txtPassword">Парола:*</label><br />
                                 <asp:TextBox id="txtPasswordRegistartion"  type="password" class="form-control col-md-9" runat="server">a</asp:TextBox>
 
                             </div>
                        
                             <div class="form-group row">
-                                <label class="text-black col-md-3 control-label" for="txtPassword">Повтори парола:</label><br />
+                                <label class="text-black col-md-3 control-label" for="txtPassword">Повтори парола:*</label><br />
                                 <asp:TextBox id="txtConfirmPasswordRegistartion"  type="password" class="form-control col-md-9" runat="server">a</asp:TextBox>
-                            </div>                       
+                            </div>   
+
+                            <div class="form-group row">
+                                <label class="text-black col-md-3 control-label" for="chbRegistrationAs">Регистрирай ме като:</label><br />
+                                <label class="switch col-md-9">
+                                  <div class="form-group row">
+                                      <label class="text-black col-md-3 control-label">Потребител</label>
+                                      <div class="form-group col-md-1" style="height:35px;width:80px;">
+                                        <asp:CheckBox ID="chbRegistrationAs" runat="server"/>
+                                        <span class="round slider"></span>
+                                      </div>
+                                      <label class="text-black col-md-3 control-label">Библиотека</label>
+
+                                  </div>
+                                  
+                                </label>
+                            </div> 
                         </div>
 
 
@@ -571,4 +587,5 @@
             </asp:UpdatePanel>
          </div>
     </div>
+
 </asp:Content>

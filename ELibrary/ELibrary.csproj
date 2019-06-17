@@ -128,6 +128,7 @@
     <Content Include="css\jquery.fancybox.min.css" />
     <Content Include="css\magnific-popup.css" />
     <Content Include="css\mediaelementplayer.css" />
+    <Content Include="css\myCSS.css" />
     <Content Include="css\owl.carousel.min.css" />
     <Content Include="css\owl.theme.default.min.css" />
     <Content Include="css\style.css" />

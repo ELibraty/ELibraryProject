@@ -50,11 +50,28 @@ namespace ELibrary
             string userName = txtUserNameRegistartion.Text.Trim();
             string password = txtPasswordRegistartion.Text.Trim();
             string confirmPassword = txtConfirmPasswordRegistartion.Text.Trim();
+            string typeUser = "user";
+            if (chbRegistrationAs.Checked == true) typeUser = "library";
 
-            RegistrationClass registrationPerson = new RegistrationClass(userName, password, confirmPassword, email);
-           
-             lblSuccessfulRegistrationMessage.Text = registrationPerson.RegistrationPerson();
-            lblSuccessfulRegistrationMessage.Visible = true;
+
+            RegistrationClass registrationPerson = new RegistrationClass(userName, password, confirmPassword, email, typeUser);
+            registrationPerson.RegistrationPerson();
+            if (registrationPerson.Errors.Count == 0)
+            {
+                lblSuccessfulRegistrationMessage.Text = "Успешно регистриран потребител!";
+                lblSuccessfulRegistrationMessage.Text = registrationPerson.Errors.Count.ToString();
+
+                lblSuccessfulRegistrationMessage.Visible = true;
+                lblFailedRegistrationMessage.Visible = false;
+
+            }
+            else
+            {
+                lblFailedRegistrationMessage.Text = string.Join("\n", registrationPerson.Errors);
+                lblSuccessfulRegistrationMessage.Visible = false;
+                lblFailedRegistrationMessage.Visible = true;
+            }
+            
 
 
         }
