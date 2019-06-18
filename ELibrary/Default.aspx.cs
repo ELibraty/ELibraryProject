@@ -16,33 +16,8 @@ namespace ELibrary
             //string opr = Request.QueryString["opr"].ToString();
 
         }
-
-        public static string GetCurrentTime()
-        {
-
-            return "Hello ";
-        }
-
-        public static string GetCurrentTime2()
-        {
-
-            return "Hello! " + Environment.NewLine + "The Current Time is: "
-                   + DateTime.Now.ToString();
-       
-           
-            /*
-            string userName = Request.QueryString["userName"].ToString();
-            string password = Request.QueryString["password"].ToString();
-            string email = Request.QueryString["email"].ToString();
-            string confirmPassword = Request.QueryString["confirmPassword"].ToString();
-
-
-
-            /*string password = txtPassword.Text.Trim();
-            string confirmPassword = txtConfirmPassword.Text.Trim();
-      
-            registrationPerson.RegistrationPerson();*/
-        }
+        
+        
 
         protected void btnRegestrationPerson_Click(object sender, EventArgs e)
         {            
@@ -53,27 +28,36 @@ namespace ELibrary
             string typeUser = "user";
             if (chbRegistrationAs.Checked == true) typeUser = "library";
 
-
             RegistrationClass registrationPerson = new RegistrationClass(userName, password, confirmPassword, email, typeUser);
             registrationPerson.RegistrationPerson();
             if (registrationPerson.Errors.Count == 0)
             {
                 lblSuccessfulRegistrationMessage.Text = "Успешно регистриран потребител!";
                 lblSuccessfulRegistrationMessage.Text = registrationPerson.Errors.Count.ToString();
-
                 lblSuccessfulRegistrationMessage.Visible = true;
                 lblFailedRegistrationMessage.Visible = false;
-
             }
             else
             {
-                lblFailedRegistrationMessage.Text = string.Join("\n", registrationPerson.Errors);
+                lblFailedRegistrationMessage.Text = string.Join("<br/>", registrationPerson.Errors);
                 lblSuccessfulRegistrationMessage.Visible = false;
                 lblFailedRegistrationMessage.Visible = true;
             }
-            
+        }
 
+        protected void btnLogIn_Click(object sender, EventArgs e)
+        {
+            string email = txtEmailLogIn.Text.Trim();
+            string password = txtPasswordLogIn.Text.Trim();
 
+            logIn loginUser = new logIn(password ,email);
+            string logInFlag = loginUser.logInUser();
+            if (logInFlag=="")
+            {
+                lblFailedLogInMessage.Text = string.Join("<br/>", loginUser.Errors);
+                lblFailedLogInMessage.Visible = true;
+            }
+            else Response.Redirect(logInFlag+"Account/index.aspx");
         }
     }
 }

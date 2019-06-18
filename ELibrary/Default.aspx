@@ -10,12 +10,7 @@
           <div class="col-md-7 text-center">
             <h2 class="section-title mb-3">
                 How It Works</h2>
-              
-
-<asp:RegularExpressionValidator ID="rev1" runat="server" 
-ControlToValidate="txtPassword"
-ErrorMessage="Password must contain: Minimum 8 and Maximum 10 characters atleast 1 UpperCase Alphabet, 1 LowerCase Alphabet, 1 Number and 1 Special Character"
-ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@$!%*?&]{8,10}"/>
+             
           </div>
         </div>
         <div class="row">
@@ -499,9 +494,8 @@ ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@
 
                         <div class="modal-body scroow">
                             <div class="form-group row">
-                                <asp:Label id="lblFailedRegistrationMessage" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
-
-                                <asp:Label  id="lblSuccessfulRegistrationMessage" runat="server" Text="" ForeColor="Green" Visible="false"></asp:Label>
+                                <asp:Label class="col-md-12" id="lblFailedRegistrationMessage" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
+                                <asp:Label class="col-md-12" id="lblSuccessfulRegistrationMessage" runat="server" Text="" ForeColor="Green" Visible="false"></asp:Label>
                             </div>
                            
                             <div class="form-group row">
@@ -568,17 +562,24 @@ ValidationExpression="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[$@$!%*?&])[A-Za-z\d$@
                         </div>
 
                         <div class="modal-body scroow">
-
+                            <div class="form-group row">
+                                <asp:Label class="col-md-12" id="lblFailedLogInMessage" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
+                            </div>
                             <div class="form-group row">
                                 <label class="text-black col-md-3 control-label " for="email">Email:</label>
-                                <input id="txtEmailLogIn"  type="email" class="form-control col-md-9"/>
-                            </div>                     
+                                <asp:TextBox id="txtEmailLogIn"  type="email" class="form-control col-md-9" runat="server"></asp:TextBox>
+                            </div>   
+
+                            <div class="form-group row">
+                                <label class="text-black col-md-3 control-label" for="txtPassword">Парола:</label><br />
+                                <asp:TextBox id="txtPasswordLogIn"  type="password" class="form-control col-md-9" runat="server"></asp:TextBox>
+                            </div> 
                         </div>
 
 
                         <div class="modal-footer container">
                        
-                             <asp:Button ID="Button1" runat="server" Text="Регистирай" class="btn btn-primary btn-block col-md-3"/>
+                             <asp:Button ID="btnLogIn" runat="server" Text="Вход" class="btn btn-primary btn-block col-md-3" OnClick="btnLogIn_Click"/>
 
                         </div>
                     </div>                    

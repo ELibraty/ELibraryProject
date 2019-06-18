@@ -17,17 +17,16 @@ namespace ELibrary
         public string Password { get => password;
             set
             {
-                string pattern = null;
-                pattern = "^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=]).*$";
+                string pattern = "^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=]).*$";
+                //checked lenght and letter at password
                 if (Regex.IsMatch(value, pattern))
                 {
                     using (MD5 md5Hash = MD5.Create())
                     {
                         password = GetMd5Hash(md5Hash, value);
                     }
-
                 }
-                else this.errors.Add("Паролата трябва да е с минимум 8 знака и да съдържа поне 1 малка, 1 главна буква и 1 знак!");
+                else this.Errors.Add("Паролата трябва да е с минимум 8 знака и да съдържа поне 1 малка, 1 главна буква и 1 знак!");
             }
         }
 
@@ -35,10 +34,10 @@ namespace ELibrary
             get => email;
             set
             {
-                string pattern = null;
-                pattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
+                string pattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
+                //validation email
                 if (Regex.IsMatch(value, pattern))email = value;
-                else this.errors.Add("Грешно въведен email адрес!");
+                else this.Errors.Add("Грешно въведен email адрес!");
             }
         }
 
@@ -46,16 +45,18 @@ namespace ELibrary
         public string Type { get => type; set => type = value; }
         public List<string> Errors { get => errors; set => errors = value; }
 
+        //class contructor
         public RegistrationClass(string userName, string password, string confirmPasswords, string email,string type)
         {
+            this.Errors = new List<string>();
             this.UserName = userName;
             this.Password = password;
             this.Email = email;
-            this.ConfirmPasswords = ConfirmPasswords;
+            this.ConfirmPasswords = confirmPasswords;
             this.Type = type;
-            this.errors = new List<string>();
         }
 
+        //registratoin new user
         public void RegistrationPerson()
         {
             try
@@ -67,26 +68,28 @@ namespace ELibrary
                 string type = this.type;
                 DBClass db = new DBClass();
                 int id = db.GetMaxID("Users");
-                if (password != confirmPasswords) this.errors.Add("Паролите не съвпадат!");
+                //check pass equals confirmPass
+                if (password != confirmPasswords) this.Errors.Add("Паролите не съвпадат!");
                 if (this.CheckDublicatePersonData()== false)
                 {
+                    //add user at db
                     string query = $"INSERT INTO Users (id,email, user_name, password, type) " +
                     $"VALUES ('{id}','{email}', '{userName}', '{password}','{type}' )";
-                    if(this.errors.Count==0) db.InsertQueryAtDB(query);
+                    if(this.Errors.Count==0) db.InsertQueryAtDB(query);
                 }
                 else
                 {
-                    this.errors.Add("Добликиране на email/потребителско име!");
+                    this.Errors.Add("Добликиране на email/потребителско име!");
                 }
 
             }
             catch (Exception)
             {
-                this.errors.Add("Нещо се обърка!");
+                this.Errors.Add("Нещо се обърка!");
             }
 
         }
-
+        //check for dublication data on db
         private bool CheckDublicatePersonData()
         {
             string userName = this.UserName;
@@ -102,6 +105,7 @@ namespace ELibrary
 
         }
 
+        //do pass to MD5
         static string GetMd5Hash(MD5 md5Hash, string input)
         {
 
