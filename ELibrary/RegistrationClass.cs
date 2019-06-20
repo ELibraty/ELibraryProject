@@ -73,8 +73,8 @@ namespace ELibrary
                 if (this.CheckDublicatePersonData()== false)
                 {
                     //add user at db
-                    string query = $"INSERT INTO Users (id,email, user_name, password, type) " +
-                    $"VALUES ('{id}','{email}', '{userName}', '{password}','{type}' )";
+                    string query = $"INSERT INTO Users (id,email, user_name, password, type, avatar) " +
+                    $"VALUES ('{id}','{email}', '{userName}', '{password}','{type}', '' )";
                     if(this.Errors.Count==0) db.InsertQueryAtDB(query);
                 }
                 else
