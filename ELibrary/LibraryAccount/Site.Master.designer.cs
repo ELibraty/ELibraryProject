@@ -19,7 +19,7 @@ namespace ELibrary {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtSearchText;
+        protected global::System.Web.UI.WebControls.TextBox txtSearchTextLibrary;
         
         /// <summary>
         /// btnSearchButton control.
@@ -28,15 +28,15 @@ namespace ELibrary {
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSearchButton;
+        protected global::System.Web.UI.WebControls.Button btnSearchButtonLibrary;
         
         /// <summary>
-        /// MainContent2 control.
+        /// MainContentLibraty control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContent2;
+        protected global::System.Web.UI.WebControls.ContentPlaceHolder MainContentLibraty;
     }
 }

@@ -1,6 +1,6 @@
 ﻿<%@ Page Language="C#" MasterPageFile="Site.Master" AutoEventWireup="true" CodeBehind="index.aspx.cs" Inherits="ELibrary.UserAccount.index" %>
 
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent2" runat="server">
+<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContentLibraty" runat="server">
     
     
 

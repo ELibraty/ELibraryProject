@@ -9,7 +9,7 @@ namespace ELibrary.UserAccount
 {
     public partial class index : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load_Library(object sender, EventArgs e)
         {
 
         }

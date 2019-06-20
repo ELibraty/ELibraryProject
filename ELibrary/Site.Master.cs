@@ -9,7 +9,7 @@ namespace ELibrary
 {
     public partial class SiteMaster : MasterPage
     {
-        protected void Page_Load2(object sender, EventArgs e)
+        protected void Page_Load_UserAcount(object sender, EventArgs e)
         {
 
         }

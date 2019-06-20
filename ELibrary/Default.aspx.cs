@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Web.Services;
+
 namespace ELibrary
 {
     public partial class _Default : Page
@@ -47,17 +48,17 @@ namespace ELibrary
 
         protected void btnLogIn_Click(object sender, EventArgs e)
         {
-            string email = txtEmailLogIn.Text.Trim();
+            /*string email = txtEmailLogIn.Text.Trim();
             string password = txtPasswordLogIn.Text.Trim();
 
-            logIn loginUser = new logIn(password ,email);
-            string logInFlag = loginUser.logInUser();
-            if (logInFlag=="")
+            LogIn loginUser = new LogIn(password ,email);
+            string logInFlag = loginUser.LogInUser();
+            if (logInFlag == "")
             {
                 lblFailedLogInMessage.Text = string.Join("<br/>", loginUser.Errors);
                 lblFailedLogInMessage.Visible = true;
             }
-            else Response.Redirect(logInFlag+"Account/index.aspx");
+            else */Response.Redirect("LibraryAccount/index.aspx");
         }
     }
 }

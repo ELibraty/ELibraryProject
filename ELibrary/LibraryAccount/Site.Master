@@ -64,7 +64,7 @@
                                     <div class="dropdown" >
                                       <span class="btn btn-default dropdown-toggle" id="dropdownMenu1" data-toggle="dropdown" style="color:white;" aria-haspopup="true" aria-expanded="true">
                                         <img src="images/property_3.jpg" alt="Image" class="img-fluid">
-                                        USER NAME
+                                        USER NAME LIBRARY
                                         <span class="caret"></span>
                                       </span>
                                       <ul class="dropdown-menu" aria-labelledby="dropdownMenu1" >
@@ -120,7 +120,7 @@
             </div>
 
             <div class="container body-content">
-                <asp:ContentPlaceHolder ID="MainContent2" runat="server">
+                <asp:ContentPlaceHolder ID="MainContentLibraty" runat="server">
                 </asp:ContentPlaceHolder>
                 <hr />
                 

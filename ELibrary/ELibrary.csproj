@@ -168,8 +168,8 @@
     <Content Include="fonts\icomoon\fonts\icomoon.woff" />
     <Content Include="fonts\icomoon\selection.json" />
     <Content Include="images\.DS_Store" />
-    <Content Include="AdminAccount\Site.Master" />
     <Content Include="LibraryAccount\Site.Master" />
+    <Content Include="AdminAccount\Site.Master" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="images\about_1.jpg" />
     <Content Include="images\hero_1.jpg" />

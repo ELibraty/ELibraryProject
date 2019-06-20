@@ -8,12 +8,12 @@ using System.Text;
 using System.Security.Cryptography;
 namespace ELibrary
 {
-    public class logIn
+    public class LogIn
     {
         private string password, email;
         private List<string> errors;
 
-        public logIn(string password, string email)
+        public LogIn(string password, string email)
         {
             this.Errors = new List<string>();
             this.Email = email;
@@ -46,7 +46,7 @@ namespace ELibrary
             }
         }
 
-        public string logInUser()
+        public string LogInUser()
         {
             string password = this.Password;
             string email = this.Email;
@@ -57,10 +57,13 @@ namespace ELibrary
             DataTable dtbl = db.SelectQueryFromDB(query);
             if (dtbl.Rows.Count > 0)
             {
-                string userType = dtbl.Rows[0][4].ToString();
-                if (userType == "user") return "User";
-                else if (userType == "Library") return "Library";
-                else return "Admin";
+                StringBuilder userType =new StringBuilder();
+                /*dtbl.Rows[0][4].ToString()
+                 * char firstLetter = userType[0];
+                firstLetter=(char)(firstLetter - 'A');
+                userType[0] =firstLetter;*/
+                userType = new StringBuilder("Library");
+                return userType.ToString();
             }
             this.Errors.Add("Невалиден email/парола!");
             return "";
