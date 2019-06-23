@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Начало" Language="C#" MasterPageFile="Site.Master" AutoEventWireup="true" CodeBehind="indexLibrary.aspx.cs" Inherits="ELibrary.UserAccount.index" %>
+﻿<%@ Page Title="Начало" Language="C#" MasterPageFile="Site.Master" AutoEventWireup="true" CodeBehind="IndexLibrary.aspx.cs" Inherits="ELibrary2.UserAccount.IndexLibrary" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     
@@ -10,7 +10,7 @@
         <!-- Section Heading -->
         <div class="col-12">
             <div class="section-heading text-center">
-            <h4>Системна информация:<br/><br/></h4>
+            <h4>Системна информацияUser:<br/><br/></h4>
             <div class="line"></div>
             </div>
         </div>
@@ -64,9 +64,6 @@
         </div>
     </div>
     </section>
-    <!-- ***** Dento Dentist Area End ***** -->
-
-  
-   
-  
+    <!-- ***** Dento Dentist Area End ***** -->  
 </asp:Content>
+

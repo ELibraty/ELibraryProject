@@ -5,11 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ELibrary.UserAccount
+namespace ELibrary2.UserAccount
 {
-    public partial class indexUser : System.Web.UI.Page
+    public partial class indexUser : Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load2(object sender, EventArgs e)
         {
 
         }

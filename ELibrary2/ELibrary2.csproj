@@ -176,7 +176,7 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="libman.json" />
-    <Content Include="LibraryAccount\indexLibrary.aspx" />
+    <Content Include="LibraryAccount\IndexLibrary.aspx" />
     <Content Include="LibraryAccount\newWebForm.aspx" />
     <Content Include="node_modules\.bin\atob" />
     <Content Include="node_modules\.bin\atob.cmd" />
@@ -2919,12 +2919,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="LibraryAccount\indexLibrary.aspx.cs">
-      <DependentUpon>indexLibrary.aspx</DependentUpon>
+    <Compile Include="LibraryAccount\IndexLibrary.aspx.cs">
+      <DependentUpon>IndexLibrary.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="LibraryAccount\indexLibrary.aspx.designer.cs">
-      <DependentUpon>indexLibrary.aspx</DependentUpon>
+    <Compile Include="LibraryAccount\IndexLibrary.aspx.designer.cs">
+      <DependentUpon>IndexLibrary.aspx</DependentUpon>
     </Compile>
     <Compile Include="LibraryAccount\newWebForm.aspx.cs">
       <DependentUpon>newWebForm.aspx</DependentUpon>

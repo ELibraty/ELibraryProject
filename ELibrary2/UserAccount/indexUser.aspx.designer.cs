@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ELibrary.UserAccount {
+namespace ELibrary2.UserAccount {
     
     
-    public partial class index {
+    public partial class indexUser {
     }
 }

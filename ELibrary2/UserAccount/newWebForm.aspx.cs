@@ -7,9 +7,9 @@ using System.Web.UI.WebControls;
 
 namespace ELibrary2.UserAccount
 {
-    public partial class newWebForm : System.Web.UI.Page
+    public partial class newWebForm : Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load2(object sender, EventArgs e)
         {
 
         }

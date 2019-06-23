@@ -62,8 +62,8 @@ namespace ELibrary2
                 char firstLetter = userType[0];
                 firstLetter = (char)('A' + (firstLetter - 'a'));
                 userType[0] = firstLetter;
-                string result = userType.ToString() + "Account2/index" + userType.ToString() + ".aspx";
-                return userType.ToString();
+                string result = userType.ToString() + "Account/Index" + userType.ToString() + ".aspx";
+                return result;
             }
             this.Errors.Add("Невалиден email/парола!");
             return "";

@@ -5,9 +5,9 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ELibrary.UserAccount
+namespace ELibrary2.UserAccount
 {
-    public partial class indexLibrary : System.Web.UI.Page
+    public partial class IndexLibrary : Page
     {
         protected void Page_Load(object sender, EventArgs e)
         {

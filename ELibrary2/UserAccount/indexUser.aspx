@@ -1,4 +1,4 @@
-﻿<%@ Page Title="Начало" Language="C#" MasterPageFile="Site.Master" AutoEventWireup="true" CodeBehind="indexUser.aspx.cs" Inherits="ELibrary.UserAccount.index" %>
+﻿<%@ Page Title="Начало" Language="C#" MasterPageFile="Site.Master" AutoEventWireup="true" CodeBehind="indexUser.aspx.cs" Inherits="ELibrary2.UserAccount.indexUser" %>
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContentUserAccount" runat="server">
     
@@ -66,3 +66,4 @@
     </section>
     <!-- ***** Dento Dentist Area End ***** -->  
 </asp:Content>
+
