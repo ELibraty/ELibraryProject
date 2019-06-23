@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ELibrary2.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ELibrary2.LibryAccount.SiteMaster" %>
 
 <!DOCTYPE html>
 
@@ -17,9 +17,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Favicon -->
-    <link rel="icon" href="./img/core-img/favicon.ico">
+    <link rel="icon" href="../img/core-img/favicon.ico">
     <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="MyCSS.css">
+    <link rel="stylesheet" href="../MyCSS.css">
 
 
 </head>
@@ -266,15 +266,15 @@
 
       <!-- ******* All JS ******* -->
       <!-- jQuery js -->
-      <script src="js/jquery.min.js"></script>
+      <script src="../query.min.js"></script>
       <!-- Popper js -->
-      <script src="js/popper.min.js"></script>
+      <script src="../js/popper.min.js"></script>
       <!-- Bootstrap js -->
-      <script src="js/bootstrap.min.js"></script>
+      <script src="../js/bootstrap.min.js"></script>
       <!-- All js -->
-      <script src="js/dento.bundle.js"></script>
+      <script src="../js/dento.bundle.js"></script>
       <!-- Active js -->
-      <script src="js/default-assets/active.js"></script>
+      <script src="../js/default-assets/active.js"></script>
     </form>
 </body>
 </html>

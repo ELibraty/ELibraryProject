@@ -7,9 +7,9 @@ using System.Web.UI.WebControls;
 
 namespace ELibrary2
 {
-    public partial class SiteMaster : MasterPage
+    public partial class _Default : Page
     {
-        protected void Page_Load_LibraryUser(object sender, EventArgs e)
+        protected void Page_LoadLibraryIndex(object sender, EventArgs e)
         {
 
         }
