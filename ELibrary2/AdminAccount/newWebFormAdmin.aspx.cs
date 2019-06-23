@@ -5,7 +5,7 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ELibrary2.UserAccount
+namespace ELibrary2.AdminAccount
 {
     public partial class newWebFormAdmin : Page
     {

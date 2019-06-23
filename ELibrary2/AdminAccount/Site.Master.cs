@@ -5,11 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ELibrary2.UserAccount
+namespace ELibrary
 {
-    public partial class newWebFormAdmin : Page
+    public partial class SiteMaster : MasterPage
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load_AdminAccount(object sender, EventArgs e)
         {
 
         }

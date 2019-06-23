@@ -113,6 +113,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="AdminAccount\IndexAdmin.aspx" />
     <Content Include="changelog.txt" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
@@ -176,6 +177,7 @@
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
     <Content Include="libman.json" />
+    <Content Include="AdminAccount\newWebFormAdmin.aspx" />
     <Content Include="LibraryAccount\IndexLibrary.aspx" />
     <Content Include="LibraryAccount\newWebForm.aspx" />
     <Content Include="node_modules\.bin\atob" />
@@ -1513,6 +1515,7 @@
     <Content Include="node_modules\xtend\package.json" />
     <Content Include="node_modules\xtend\README.md" />
     <Content Include="LibraryAccount\Site.Master" />
+    <Content Include="AdminAccount\Site.Master" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="gulpfile.js" />
     <Content Include="img\bg-img\1.jpg" />
@@ -2906,6 +2909,13 @@
     <Content Include="scss\widget.scss" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminAccount\IndexAdmin.aspx.cs">
+      <DependentUpon>IndexAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminAccount\IndexAdmin.aspx.designer.cs">
+      <DependentUpon>IndexAdmin.aspx</DependentUpon>
+    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="DB.cs" />
@@ -2918,6 +2928,20 @@
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="AdminAccount\newWebFormAdmin.aspx.cs">
+      <DependentUpon>newWebFormAdmin.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminAccount\newWebFormAdmin.aspx.designer.cs">
+      <DependentUpon>newWebFormAdmin.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="AdminAccount\Site.Master.cs">
+      <DependentUpon>Site.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminAccount\Site.Master.designer.cs">
+      <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="LibraryAccount\IndexLibrary.aspx.cs">
       <DependentUpon>IndexLibrary.aspx</DependentUpon>

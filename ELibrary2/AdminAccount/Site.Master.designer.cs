@@ -13,7 +13,7 @@ namespace ELibrary {
     public partial class SiteMaster {
         
         /// <summary>
-        /// MainContent control.
+        /// MainContentAdminAccount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
