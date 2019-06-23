@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ELibrary {
+namespace ELibrary2.LibraryAccount {
     
     
     public partial class SiteMaster {

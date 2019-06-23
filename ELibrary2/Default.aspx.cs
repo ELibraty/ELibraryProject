@@ -50,7 +50,9 @@ namespace ELibrary2
                 lblFailedLogInMessage.Text = string.Join("<br/>", loginUser.Errors);
                 lblFailedLogInMessage.Visible = true;
             }
-            else Response.Redirect(logInFlag + "Account/index.aspx");
+            else Response.Redirect(logInFlag + "Account/Index.aspx");
+            //else Response.Redirect(logInFlag + "Account/Index" + logInFlag + ".aspx");
+
         }
     }
 }

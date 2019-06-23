@@ -1,7 +1,8 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="ELibrary.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ELibrary2.LibraryAccount.SiteMaster" %>
 
 <!DOCTYPE html>
-<html lang="bg">
+
+<html lang="en">
 <head runat="server">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -16,9 +17,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <!-- Favicon -->
-    <link rel="icon" href="../img/core-img/favicon.ico">
+    <link rel="icon" href="./img/core-img/favicon.ico">
     <!-- Core Stylesheet -->
-    <link rel="stylesheet" href="../MyCSS.css">
+    <link rel="stylesheet" href="MyCSS.css">
 
 
 </head>
@@ -66,7 +67,7 @@
                 <nav class="classy-navbar justify-content-between" id="dentoNav">
 
                 <!-- Logo -->
-                <a class="nav-brand" href="index.html"><img src="../img/core-img/logo.png" alt=""></a>
+                <a class="nav-brand" href="index.html"><img src="./img/core-img/logo.png" alt=""></a>
 
                 <!-- Navbar Toggler -->
                 <div class="classy-navbar-toggler">
@@ -135,31 +136,33 @@
         </header>
         <!-- ***** Header Area End ***** -->
         
-        <!-- ***** Breadcrumb Area Start ***** 
-        <div class="breadcumb-area bg-img bg-gradient-overlay" style="background-image: url(../img/bg-img/ELibrary_LibraryUser.jpg);">
-        <div class="container h-100">
-            <div class="row h-100 align-items-center">
-            <div class="col-12">
-                <h2 class="title"></h2>
+        <!-- ***** Welcome Area Start ***** -->
+        <section class="welcome-area">
+        <!-- Welcome Slides -->
+        <div class="welcome-slides owl-carousel">
+            <!-- Single Welcome Slide -->
+            <div class="welcome-welcome-slide bg-img bg-gradient-overlay jarallax" style="background-image: url(img/bg-img/ELibraryMainPicture.jpg);">
+            <div class="container h-100">
+                <div class="row h-100 align-items-center">
+                <div class="col-12">
+                    <!-- Welcome Text -->
+                    <div class="welcome-text text-center">
+                    <h2 data-animation="fadeInUp" data-delay="100ms">Всеки един заслужава свободен достъп до библиотекчни книги</h2>
+                    <p data-animation="fadeInUp" data-delay="300ms">Библиотеката е огромна кутия, пълна с красиви книги, истински коледен подарък. - Одри Нифнегър</p>
+                    <div class="welcome-btn-group">
+
+                        <button type="button" class="btn dento-btn mx-2" data-toggle="modal"  data-target="#appLogInPerson">Вход</button>
+                        <button type="button" class="btn dento-btn mx-2"  data-toggle="modal" data-target="#appRegesterPerson">Регистрация</button>
+                    </div>
+                    </div>
+                </div>
+                </div>
             </div>
             </div>
+
         </div>
-        </div>
-        <div class="breadcumb--con">
-        <div class="container">
-            <div class="row">
-            <div class="col-12">
-                <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#"><i class="fa fa-home"></i> Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">About Us</li>
-                </ol>
-                </nav>
-            </div>
-            </div>
-        </div>
-        </div>
-        <!-- ***** Breadcrumb Area End ***** -->
+        </section>
+        <!-- ***** Welcome Area End ***** -->
 
         <div class="container body-content">
             <asp:ContentPlaceHolder ID="MainContent" runat="server">
@@ -263,15 +266,15 @@
 
       <!-- ******* All JS ******* -->
       <!-- jQuery js -->
-      <script src="../js/jquery.min.js"></script>
+      <script src="js/jquery.min.js"></script>
       <!-- Popper js -->
-      <script src="../js/popper.min.js"></script>
+      <script src="js/popper.min.js"></script>
       <!-- Bootstrap js -->
-      <script src="../js/bootstrap.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
       <!-- All js -->
-      <script src="../js/dento.bundle.js"></script>
+      <script src="js/dento.bundle.js"></script>
       <!-- Active js -->
-      <script src="../js/default-assets/active.js"></script>
+      <script src="js/default-assets/active.js"></script>
     </form>
 </body>
 </html>

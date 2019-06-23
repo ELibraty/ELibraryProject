@@ -175,9 +175,8 @@
     <Content Include="fonts\fontawesome-webfont.woff" />
     <Content Include="fonts\fontawesome-webfont.woff2" />
     <Content Include="fonts\FontAwesome.otf" />
-    <Content Include="LibraryAccount\Index.aspx" />
     <Content Include="libman.json" />
-    <Content Include="LibraryAccount\Site.Master" />
+    <Content Include="LibraryAccount\index.aspx" />
     <Content Include="node_modules\.bin\atob" />
     <Content Include="node_modules\.bin\atob.cmd" />
     <Content Include="node_modules\.bin\color-support" />
@@ -1512,6 +1511,7 @@
     <Content Include="node_modules\xtend\Makefile" />
     <Content Include="node_modules\xtend\package.json" />
     <Content Include="node_modules\xtend\README.md" />
+    <Content Include="LibraryAccount\Site.Master" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="gulpfile.js" />
     <Content Include="img\bg-img\1.jpg" />
@@ -2905,7 +2905,7 @@
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="DBClass.cs" />
+    <Compile Include="DB.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2916,12 +2916,12 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="LibraryAccount\Index.aspx.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="LibraryAccount\index.aspx.cs">
+      <DependentUpon>index.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="LibraryAccount\Index.aspx.designer.cs">
-      <DependentUpon>Index.aspx</DependentUpon>
+    <Compile Include="LibraryAccount\index.aspx.designer.cs">
+      <DependentUpon>index.aspx</DependentUpon>
     </Compile>
     <Compile Include="LibraryAccount\Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
