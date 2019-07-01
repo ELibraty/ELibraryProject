@@ -7,7 +7,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ELibrary2.UserAccount
+namespace ELibrary2
 {
 
 

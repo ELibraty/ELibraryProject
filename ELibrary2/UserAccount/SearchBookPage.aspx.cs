@@ -5,11 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 
-namespace ELibrary
+namespace ELibrary2.LibraryAccount
 {
-    public partial class SiteMaster : MasterPage
+    public partial class bookPage : System.Web.UI.Page
     {
-        protected void Page_Load_AdminAccount(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e)
         {
 
         }

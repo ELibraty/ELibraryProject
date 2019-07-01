@@ -179,6 +179,7 @@
     <Content Include="libman.json" />
     <Content Include="AdminAccount\newWebFormAdmin.aspx" />
     <Content Include="LibraryAccount\IndexLibrary.aspx" />
+    <Content Include="UserAccount\SearchBookPage.aspx" />
     <Content Include="LibraryAccount\newWebForm.aspx" />
     <Content Include="node_modules\.bin\atob" />
     <Content Include="node_modules\.bin\atob.cmd" />
@@ -1514,8 +1515,10 @@
     <Content Include="node_modules\xtend\Makefile" />
     <Content Include="node_modules\xtend\package.json" />
     <Content Include="node_modules\xtend\README.md" />
-    <Content Include="LibraryAccount\Site.Master" />
-    <Content Include="AdminAccount\Site.Master" />
+    <Content Include="UserAccount\indexUser.aspx" />
+    <Content Include="WebForm1.aspx" />
+    <Content Include="LibraryAccount\LibraryAccount.Master" />
+    <Content Include="AdminAccount\AdminAccount.Master" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="gulpfile.js" />
     <Content Include="img\bg-img\1.jpg" />
@@ -2874,7 +2877,6 @@
     <Content Include="Scripts\WebForms\WebUIValidation.js" />
     <Content Include="Site.Master" />
     <Content Include="MyCSS.css" />
-    <Content Include="UserAccount\indexUser.aspx" />
     <Content Include="UserAccount\newWebForm.aspx" />
     <Content Include="ViewSwitcher.ascx" />
     <Content Include="Web.config" />
@@ -2909,6 +2911,13 @@
     <Content Include="scss\widget.scss" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminAccount\AdminAccount.Master.cs">
+      <DependentUpon>AdminAccount.Master</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="AdminAccount\AdminAccount.Master.designer.cs">
+      <DependentUpon>AdminAccount.Master</DependentUpon>
+    </Compile>
     <Compile Include="AdminAccount\IndexAdmin.aspx.cs">
       <DependentUpon>IndexAdmin.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2936,12 +2945,12 @@
     <Compile Include="AdminAccount\newWebFormAdmin.aspx.designer.cs">
       <DependentUpon>newWebFormAdmin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AdminAccount\Site.Master.cs">
-      <DependentUpon>Site.Master</DependentUpon>
+    <Compile Include="LibraryAccount\LibraryAccount.Master.cs">
+      <DependentUpon>LibraryAccount.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="AdminAccount\Site.Master.designer.cs">
-      <DependentUpon>Site.Master</DependentUpon>
+    <Compile Include="LibraryAccount\LibraryAccount.Master.designer.cs">
+      <DependentUpon>LibraryAccount.Master</DependentUpon>
     </Compile>
     <Compile Include="LibraryAccount\IndexLibrary.aspx.cs">
       <DependentUpon>IndexLibrary.aspx</DependentUpon>
@@ -2950,19 +2959,19 @@
     <Compile Include="LibraryAccount\IndexLibrary.aspx.designer.cs">
       <DependentUpon>IndexLibrary.aspx</DependentUpon>
     </Compile>
+    <Compile Include="UserAccount\SearchBookPage.aspx.cs">
+      <DependentUpon>SearchBookPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserAccount\SearchBookPage.aspx.designer.cs">
+      <DependentUpon>SearchBookPage.aspx</DependentUpon>
+    </Compile>
     <Compile Include="LibraryAccount\newWebForm.aspx.cs">
       <DependentUpon>newWebForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
     <Compile Include="LibraryAccount\newWebForm.aspx.designer.cs">
       <DependentUpon>newWebForm.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="LibraryAccount\Site.Master.cs">
-      <DependentUpon>Site.Master</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="LibraryAccount\Site.Master.designer.cs">
-      <DependentUpon>Site.Master</DependentUpon>
     </Compile>
     <Compile Include="LogIn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -2981,13 +2990,6 @@
     <Compile Include="Site.Mobile.Master.designer.cs">
       <DependentUpon>Site.Mobile.Master</DependentUpon>
     </Compile>
-    <Compile Include="UserAccount\indexUser.aspx.cs">
-      <DependentUpon>indexUser.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="UserAccount\indexUser.aspx.designer.cs">
-      <DependentUpon>indexUser.aspx</DependentUpon>
-    </Compile>
     <Compile Include="UserAccount\newWebForm.aspx.cs">
       <DependentUpon>newWebForm.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2995,12 +2997,19 @@
     <Compile Include="UserAccount\newWebForm.aspx.designer.cs">
       <DependentUpon>newWebForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="UserAccount\Site.Master.cs">
-      <DependentUpon>Site.Master</DependentUpon>
+    <Compile Include="UserAccount\UserAccount.Master.cs">
+      <DependentUpon>UserAccount.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserAccount\Site.Master.designer.cs">
-      <DependentUpon>Site.Master</DependentUpon>
+    <Compile Include="UserAccount\UserAccount.Master.designer.cs">
+      <DependentUpon>UserAccount.Master</DependentUpon>
+    </Compile>
+    <Compile Include="UserAccount\indexUser.aspx.cs">
+      <DependentUpon>indexUser.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserAccount\indexUser.aspx.designer.cs">
+      <DependentUpon>indexUser.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
@@ -3008,6 +3017,13 @@
     </Compile>
     <Compile Include="ViewSwitcher.ascx.designer.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>
+    </Compile>
+    <Compile Include="WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -3017,7 +3033,7 @@
   <ItemGroup>
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-    <Content Include="UserAccount\Site.Master" />
+    <Content Include="UserAccount\UserAccount.Master" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

@@ -1,4 +1,4 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.master.cs" Inherits="ELibrary2.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="ELibrary2.SiteMaster" %>
 
 <!DOCTYPE html>
 
@@ -128,6 +128,7 @@
                 </div>
 
                 <!-- Booking Now Button -->
+                
                 <a href="#" class="btn dento-btn booking-btn">Booking Now</a>
                 </nav>
             </div>

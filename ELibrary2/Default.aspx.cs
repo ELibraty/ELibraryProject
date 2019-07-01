@@ -50,8 +50,14 @@ namespace ELibrary2
                 lblFailedLogInMessage.Text = string.Join("<br/>", loginUser.Errors);
                 lblFailedLogInMessage.Visible = true;
             }
-            else Response.Redirect(request);
+            else
+            {
+                Session["email"] = email;
+                Response.Redirect(request);
+            }
 
         }
+
+      
     }
 }

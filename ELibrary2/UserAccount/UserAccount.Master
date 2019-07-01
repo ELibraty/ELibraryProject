@@ -1,9 +1,10 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="ELibrary.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="UserAccount.master.cs" Inherits="ELibrary2.UserAccount.UserAccount" %>
 
 <!DOCTYPE html>
-<html lang="bg">
+
+<html>
 <head runat="server">
-    <meta charset="utf-8" />
+     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - ELibrary</title>
 
@@ -19,8 +20,6 @@
     <link rel="icon" href="../img/core-img/favicon.ico">
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="../MyCSS.css">
-
-
 </head>
 <body>
     <form runat="server">
@@ -121,6 +120,8 @@
                         </ul>
                         </li>
                         <li><a href="./contact.html">Contact</a></li>
+                        <li>userName: <asp:Label ID="lblUserName" runat="server"></asp:Label> </li>
+
                     </ul>
                     </div>
                     <!-- Nav End -->
@@ -162,7 +163,7 @@
         <!-- ***** Breadcrumb Area End ***** -->
 
         <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContentAdminAccount" runat="server">
+            <asp:ContentPlaceHolder ID="MainContentUserAccount" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
         </div>

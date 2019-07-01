@@ -7,13 +7,13 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ELibrary {
+namespace ELibrary2.AdminAccount {
     
     
-    public partial class SiteMaster {
+    public partial class AdminAccount {
         
         /// <summary>
-        /// MainContent control.
+        /// MainContentAdminAccount control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.

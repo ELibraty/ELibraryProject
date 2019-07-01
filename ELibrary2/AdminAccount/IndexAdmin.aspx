@@ -1,10 +1,6 @@
-﻿
-<%@ Page Title="Начало" Language="C#" MasterPageFile="Site.Master" AutoEventWireup="true" CodeBehind="IndexAdmin.aspx.cs" Inherits="ELibrary2.UserAccount.newWebForm" %>
-
-<asp:Content ID="BodyContent" ContentPlaceHolderID="MainContentAdminAccount" runat="server">
-    
-    
-    <!-- ***** Dento Dentist Area Start ***** -->
+﻿<%@ Page Title="Начало"  Language="C#" MasterPageFile="~/AdminAccount/AdminAccount.Master" AutoEventWireup="true" CodeBehind="IndexAdmin.aspx.cs" Inherits="ELibrary2.AdminAccount.WebForm1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContentAdminAccount" runat="server">
+     <!-- ***** Dento Dentist Area Start ***** -->
     <section class="dentist-area section-padding-100-0">
     <div class="container">
         <div class="row">
@@ -67,4 +63,3 @@
     </section>
     <!-- ***** Dento Dentist Area End ***** -->  
 </asp:Content>
-

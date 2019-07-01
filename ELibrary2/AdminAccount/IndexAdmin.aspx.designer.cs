@@ -7,9 +7,9 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace ELibrary2.UserAccount {
+namespace ELibrary2.AdminAccount {
     
     
-    public partial class newWebForm {
+    public partial class IndexAdmin {
     }
 }

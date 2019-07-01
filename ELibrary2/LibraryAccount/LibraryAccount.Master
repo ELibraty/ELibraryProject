@@ -1,10 +1,9 @@
-﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site.Master.cs" Inherits="ELibrary.SiteMaster" %>
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="LibraryAccount.master.cs" Inherits="ELibrary2.LibraryAccount.LibraryAccount" %>
 
 <!DOCTYPE html>
-<html lang="bg">
+
+<html>
 <head runat="server">
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title><%: Page.Title %> - ELibrary</title>
 
     <asp:PlaceHolder runat="server">
@@ -19,11 +18,9 @@
     <link rel="icon" href="../img/core-img/favicon.ico">
     <!-- Core Stylesheet -->
     <link rel="stylesheet" href="../MyCSS.css">
-
-
 </head>
 <body>
-    <form runat="server">
+    <form id="form1" runat="server">
         <!-- Preloader -->
         <div id="preloader">
         <div class="preload-content">
@@ -162,7 +159,7 @@
         <!-- ***** Breadcrumb Area End ***** -->
 
         <div class="container body-content">
-            <asp:ContentPlaceHolder ID="MainContentUserAccount" runat="server">
+            <asp:ContentPlaceHolder ID="MainContent" runat="server">
             </asp:ContentPlaceHolder>
             <hr />
         </div>
