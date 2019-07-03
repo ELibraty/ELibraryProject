@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/LibraryAccount/LibraryAccount.Master" AutoEventWireup="true" CodeBehind="IndexLibrary.aspx.cs" Inherits="ELibrary2.LibraryAccount.WebForm2" %>
+﻿<%@ Page Title="Начало" Language="C#" MasterPageFile="~/LibraryAccount/LibraryAccount.Master" AutoEventWireup="true" CodeBehind="IndexLibrary.aspx.cs" Inherits="ELibrary2.LibraryAccount.WebForm2" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
     <!-- ***** Dento Dentist Area Start ***** -->
     <section class="dentist-area section-padding-100-0">

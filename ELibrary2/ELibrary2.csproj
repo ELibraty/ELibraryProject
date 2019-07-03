@@ -179,6 +179,7 @@
     <Content Include="libman.json" />
     <Content Include="AdminAccount\newWebFormAdmin.aspx" />
     <Content Include="LibraryAccount\IndexLibrary.aspx" />
+    <Content Include="LibraryAccount\AddedBookPage.aspx" />
     <Content Include="UserAccount\SearchBookPage.aspx" />
     <Content Include="LibraryAccount\newWebForm.aspx" />
     <Content Include="node_modules\.bin\atob" />
@@ -2959,6 +2960,14 @@
     <Compile Include="LibraryAccount\IndexLibrary.aspx.designer.cs">
       <DependentUpon>IndexLibrary.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LibraryAccount\AddedBookPage.aspx.cs">
+      <DependentUpon>AddedBookPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="LibraryAccount\AddedBookPage.aspx.designer.cs">
+      <DependentUpon>AddedBookPage.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="User.cs" />
     <Compile Include="UserAccount\SearchBookPage.aspx.cs">
       <DependentUpon>SearchBookPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

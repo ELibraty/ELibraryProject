@@ -47,7 +47,7 @@ namespace ELibrary2
             }
         }
 
-        public string LogInUser()
+        public List<string> LogInUser()
         {
             string password = this.Password;
             string email = this.Email;
@@ -62,11 +62,16 @@ namespace ELibrary2
                 char firstLetter = userType[0];
                 firstLetter = (char)('A' + (firstLetter - 'a'));
                 userType[0] = firstLetter;
-                string result = userType.ToString() + "Account/Index" + userType.ToString() + ".aspx";
+                string userId = dtbl.Rows[0][0].ToString();
+                string goPage = userType.ToString() + "Account/Index" + userType.ToString() + ".aspx";
+
+                List<string> result = new List<string>();
+                result.Add(userId);
+                result.Add(goPage);
                 return result;
             }
             this.Errors.Add("Невалиден email/парола!");
-            return "";
+            return new List<string>();
 
         }
 

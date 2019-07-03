@@ -44,16 +44,16 @@ namespace ELibrary2
             string email = txtEmailLogIn.Text.Trim();
             string password = txtPasswordLogIn.Text.Trim();
             LogIn loginUser = new LogIn(password, email);
-            string request = loginUser.LogInUser();
-            if (request == "")
+            List<string> request = loginUser.LogInUser();
+            if (request[1] == "")
             {
                 lblFailedLogInMessage.Text = string.Join("<br/>", loginUser.Errors);
                 lblFailedLogInMessage.Visible = true;
             }
             else
             {
-                Session["email"] = email;
-                Response.Redirect(request);
+                Session["UserId"] = request[0];
+                Response.Redirect(request[1]);
             }
 
         }
