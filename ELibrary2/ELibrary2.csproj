@@ -2928,7 +2928,7 @@
     </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="DB.cs" />
+    <Compile Include="CSClasses\DB.cs" />
     <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2946,6 +2946,7 @@
     <Compile Include="AdminAccount\newWebFormAdmin.aspx.designer.cs">
       <DependentUpon>newWebFormAdmin.aspx</DependentUpon>
     </Compile>
+    <Compile Include="LibraryAccount\CSClasses\AddBook.cs" />
     <Compile Include="LibraryAccount\LibraryAccount.Master.cs">
       <DependentUpon>LibraryAccount.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2967,7 +2968,7 @@
     <Compile Include="LibraryAccount\AddedBookPage.aspx.designer.cs">
       <DependentUpon>AddedBookPage.aspx</DependentUpon>
     </Compile>
-    <Compile Include="User.cs" />
+    <Compile Include="CSClasses\User.cs" />
     <Compile Include="UserAccount\SearchBookPage.aspx.cs">
       <DependentUpon>SearchBookPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -2982,9 +2983,9 @@
     <Compile Include="LibraryAccount\newWebForm.aspx.designer.cs">
       <DependentUpon>newWebForm.aspx</DependentUpon>
     </Compile>
-    <Compile Include="LogIn.cs" />
+    <Compile Include="CSClasses\LogIn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SingUp.cs" />
+    <Compile Include="CSClasses\SingUp.cs" />
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

@@ -110,7 +110,6 @@ namespace ELibrary2
 
             DBClass db = new DBClass();
             string query = $"Select* from Users where email='{email}' or user_name='{userName}';";
-            db.SelectQueryFromDB(query);
             DataTable dtbl = db.SelectQueryFromDB(query);
             if(dtbl.Rows.Count==0)return false;
             return true;

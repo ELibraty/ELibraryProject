@@ -10,7 +10,7 @@
 namespace ELibrary2.LibraryAccount {
     
     
-    public partial class WebForm1 {
+    public partial class WebForm3 {
         
         /// <summary>
         /// txtSearchBookName control.
@@ -58,57 +58,66 @@ namespace ELibrary2.LibraryAccount {
         protected global::System.Web.UI.UpdatePanel UpdatePanel1;
         
         /// <summary>
-        /// lblFailedMessage control.
+        /// lblFailedAddBookMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblFailedMessage;
+        protected global::System.Web.UI.WebControls.Label lblFailedAddBookMessage;
         
         /// <summary>
-        /// lblSuccessfulMessage control.
+        /// lblSuccessfulAddBookMessage control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblSuccessfulMessage;
+        protected global::System.Web.UI.WebControls.Label lblSuccessfulAddBookMessage;
         
         /// <summary>
-        /// txtAddBookName control.
+        /// txtBookName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAddBookName;
+        protected global::System.Web.UI.WebControls.TextBox txtBookName;
         
         /// <summary>
-        /// txtAddAuthorName control.
+        /// txtAuthorName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtAddAuthorName;
+        protected global::System.Web.UI.WebControls.TextBox txtAuthorName;
         
         /// <summary>
-        /// DropDownList1 control.
+        /// txtBookCode control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList DropDownList1;
+        protected global::System.Web.UI.WebControls.TextBox txtBookCode;
         
         /// <summary>
-        /// btnSingUpPerson control.
+        /// ddlGenreAddBook control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSingUpPerson;
+        protected global::System.Web.UI.WebControls.DropDownList ddlGenreAddBook;
+        
+        /// <summary>
+        /// addNewBook control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Button addNewBook;
     }
 }

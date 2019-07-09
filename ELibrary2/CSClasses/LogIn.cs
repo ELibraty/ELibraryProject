@@ -53,7 +53,7 @@ namespace ELibrary2
             string email = this.Email;
 
             DBClass db = new DBClass();
-            string query = $"Select* from Users where email='{email}' and password='{password}';";
+            string query = $"Select* from Users Where email='{email}' and password='{password}';";
             db.SelectQueryFromDB(query);
             DataTable dtbl = db.SelectQueryFromDB(query);
             if (dtbl.Rows.Count > 0)
