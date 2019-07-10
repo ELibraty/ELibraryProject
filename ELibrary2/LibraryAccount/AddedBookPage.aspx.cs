@@ -12,7 +12,12 @@ namespace ELibrary2.LibraryAccount
     {
         protected void Page_Load(object sender, EventArgs e)
         {
+            SetGenreDate();
+            SetAddedBook();
+        }
 
+        protected void SetGenreDate()
+        {
             DBClass db = new DBClass();
             string query = $"Select* from Genres order by genre asc;";
             db.SelectQueryFromDB(query);
@@ -21,9 +26,24 @@ namespace ELibrary2.LibraryAccount
             {
                 string genreName = dtbl.Rows[i][1].ToString();
                 ListItem item = new ListItem(genreName, genreName);
-                ddlGenre.Items.Add(item);
+                ddlGenreSearch.Items.Add(item);
                 ddlGenreAddBook.Items.Add(item);
             }
+        }
+
+        protected void SetAddedBook()
+        {
+            DBClass db = new DBClass();
+            int userId = 4;//int.Parse(Session["UserId"].ToString());
+            string bookName = txtBookNameSearch.Text;
+            string aucthorName = txtAutcorNameSearch.Text;
+            string genre = ddlGenreSearch.SelectedValue;
+            string bookCode = txtBookCodeSearch.Text;
+
+            SearchAddedBook searchAddedBook = new SearchAddedBook(userId,bookName,aucthorName,genre, bookCode);
+            DataTable dtbl = searchAddedBook.GetAddedBook();
+            gdvAddedBook.DataSource = dtbl;
+            gdvAddedBook.DataBind();
         }
 
         protected void addNewBook_Click(object sender, EventArgs e)
@@ -64,8 +84,18 @@ namespace ELibrary2.LibraryAccount
             txtBookName.Text="";
             txtAuthorName.Text="";
             //dropdownlist.Items.FindByValue(value).Selected
-            ddlGenreAddBook.Items[0].Selected=true;
+            //ddlGenreAddBook.Items[0].Selected=true;
             txtBookCode.Text="";               
+        }
+
+        protected void lnkButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        protected void btnSearch_Click(object sender, EventArgs e)
+        {
+            SetAddedBook();
         }
     }
 }

@@ -15,25 +15,55 @@ namespace ELibrary2.LibraryAccount
         public AddBook(int userId, string bookName, string authorName, string genre, string bookCode)
         {
             this.BookName = bookName;
+            this.Errors = new List<string>();
+
             this.AuthorName = authorName;
             this.Genre = genre;
-            this.Errors = new List<string>();
             this.UserId = userId;
             this.BookCode = bookCode;
-
-            DBClass db = new DBClass();
-            string query = $"Select* from Genres where genre='{this.Genre}';";
-            DataTable dtbl = db.SelectQueryFromDB(query);
-            int idGenre = int.Parse(dtbl.Rows[0][0].ToString());
-            this.GenreId = idGenre;
+            if (this.Genre != "Жанр")
+            {
+                DBClass db = new DBClass();
+                string query = $"Select* from Genres where genre='{this.Genre}';";
+                DataTable dtbl = db.SelectQueryFromDB(query);
+                if (dtbl.Rows.Count > 0)
+                {
+                    int idGenre = int.Parse(dtbl.Rows[0][0].ToString());
+                    this.GenreId = idGenre;
+                }
+                else this.Errors.Add("Този жанр не е намерен в базата данни!");
+                
+            }
+            else this.Errors.Add("Изберете жанр");
         }
-        
-        public string BookName { get => bookName; set => bookName = value; }
-        public string Genre { get => genre; set => genre = value;}
-        public string AuthorName { get => authorName; set => authorName = value; }
+
+        public string BookName { get => bookName;
+            set{
+                if (value.Length > 3) this.Errors.Add("Името на книгата трябва да съдържа минимум 3 символа!");
+                bookName = value;
+                
+            }
+        }
+        public string Genre { get => genre;
+            set{
+                if (value.Length > 3) this.Errors.Add("Моля изберете жанр!");
+                genre = value;
+            }
+        }
+        public string AuthorName { get => authorName;
+            set{
+                if (value.Length > 3) this.Errors.Add("Името на автора трябва да съдържа минимум 3 символа!");
+                genre = value;
+            }
+        }
         public List<string> Errors { get => errors; private set => errors = value; }
         private int UserId { get => userId; set => userId = value; }
-        public string BookCode { get => bookCode; set => bookCode = value; }
+        public string BookCode { get => bookCode;
+            set{
+                if (value.Length > 3) this.Errors.Add("Кода на книгата трябва да съдържа минимум 3 символа!");
+                genre = value;
+            }
+        }
         private int GenreId { get => genreId; set => genreId = value; }
 
         //Add new book
@@ -43,7 +73,6 @@ namespace ELibrary2.LibraryAccount
             {
                 CheckDublicateBook();
                 if (this.Errors.Count == 0) AddNewBookAtDB();
-                else this.Errors.Add("Има грешка");
             }
             catch (Exception)
             {
