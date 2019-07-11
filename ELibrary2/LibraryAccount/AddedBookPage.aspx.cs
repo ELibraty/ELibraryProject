@@ -14,6 +14,18 @@ namespace ELibrary2.LibraryAccount
         {
             SetGenreDate();
             SetAddedBook();
+            /*String newPageButton = new Button();
+            newPageButton.Text = "1";
+            
+            string newPageButton= "<asp:Button Text="Напред > " runat="server" class="btn btn-primary btn - block" />"
+            lblPages.Text += newPageButton;*/
+         
+        }
+
+        private void Load_Items(object sender, CommandEventArgs e)
+        {
+            int id = Convert.ToInt32(e.CommandArgument);
+            // Do something with id
         }
 
         protected void SetGenreDate()
@@ -39,11 +51,35 @@ namespace ELibrary2.LibraryAccount
             string aucthorName = txtAutcorNameSearch.Text;
             string genre = ddlGenreSearch.SelectedValue;
             string bookCode = txtBookCodeSearch.Text;
+            string sortMethod = ddlSortAddedBook.SelectedValue;
 
-            SearchAddedBook searchAddedBook = new SearchAddedBook(userId,bookName,aucthorName,genre, bookCode);
+            int countBookAtPage = int.Parse(ddlCountBookAtPage.SelectedValue);
+            int currentPage = 1;
+            SearchAddedBook searchAddedBook = new SearchAddedBook(userId,bookName,aucthorName,genre, bookCode, sortMethod, currentPage, countBookAtPage);
             DataTable dtbl = searchAddedBook.GetAddedBook();
             gdvAddedBook.DataSource = dtbl;
             gdvAddedBook.DataBind();
+
+            int pagesOfAddedBook = searchAddedBook.GetPagesOfAddedBook();
+            for (int i = 1; i <= pagesOfAddedBook; i++)
+            {
+                var button = new Button
+                {
+                    ID = "btnPage" + i,
+                    CommandArgument = i.ToString(),
+                    Text = i.ToString(),
+                    OnClientClick = "btn_Click",
+                    CssClass = "btn btn-primary btn-block col-1 col-sm-1 col-md-1"
+                };
+                button.Command += Load_Items;
+                pnhPages.Controls.Add(button);
+
+            }
+        }
+
+        void changePage(object sender, EventArgs e)
+        {
+
         }
 
         protected void addNewBook_Click(object sender, EventArgs e)
@@ -59,7 +95,7 @@ namespace ELibrary2.LibraryAccount
         
             if (newBook.Errors.Count == 0)
             {
-                lblFailedAddBookMessage.Text = "Успешно добавена книга!";
+                lblSuccessfulAddBookMessage.Text = "Успешно добавена книга!";
                 lblSuccessfulAddBookMessage.Visible = true;
                 lblFailedAddBookMessage.Visible = false;
             }
@@ -70,8 +106,8 @@ namespace ELibrary2.LibraryAccount
                 lblFailedAddBookMessage.Visible = true;
             }
 
-           // ClearAddNewBookData();
-
+            // ClearAddNewBookData();
+            SetAddedBook();
         }
 
         protected void newBook_Click(object sender, EventArgs e)
@@ -96,6 +132,16 @@ namespace ELibrary2.LibraryAccount
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             SetAddedBook();
+        }
+
+        protected void btnEdit_Click(object sender, ImageClickEventArgs e)
+        {
+
+        }
+
+        protected void btnDelete_Click(object sender, ImageClickEventArgs e)
+        {
+
         }
     }
 }

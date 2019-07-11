@@ -14,8 +14,9 @@ namespace ELibrary2.LibraryAccount
         private int userId, genreId;
         public AddBook(int userId, string bookName, string authorName, string genre, string bookCode)
         {
-            this.BookName = bookName;
             this.Errors = new List<string>();
+
+            this.BookName = bookName;
 
             this.AuthorName = authorName;
             this.Genre = genre;
@@ -34,34 +35,34 @@ namespace ELibrary2.LibraryAccount
                 else this.Errors.Add("Този жанр не е намерен в базата данни!");
                 
             }
-            else this.Errors.Add("Изберете жанр");
+            else this.Errors.Add("Изберете жанр!");
         }
 
         public string BookName { get => bookName;
             set{
-                if (value.Length > 3) this.Errors.Add("Името на книгата трябва да съдържа минимум 3 символа!");
+                if (value.Length <= 3) this.Errors.Add("Името на книгата трябва да съдържа минимум 3 символа!");
                 bookName = value;
                 
             }
         }
         public string Genre { get => genre;
             set{
-                if (value.Length > 3) this.Errors.Add("Моля изберете жанр!");
+                //if (value.Length < 1) this.Errors.Add("Моля изберете жанр!");
                 genre = value;
             }
         }
         public string AuthorName { get => authorName;
             set{
-                if (value.Length > 3) this.Errors.Add("Името на автора трябва да съдържа минимум 3 символа!");
-                genre = value;
+                if (value.Length <= 3) this.Errors.Add("Името на автора трябва да съдържа минимум 3 символа!");
+                authorName = value;
             }
         }
         public List<string> Errors { get => errors; private set => errors = value; }
         private int UserId { get => userId; set => userId = value; }
         public string BookCode { get => bookCode;
             set{
-                if (value.Length > 3) this.Errors.Add("Кода на книгата трябва да съдържа минимум 3 символа!");
-                genre = value;
+                if (value.Length <= 3) this.Errors.Add("Кода на книгата трябва да съдържа минимум 3 символа!");
+                bookCode = value;
             }
         }
         private int GenreId { get => genreId; set => genreId = value; }
@@ -73,6 +74,7 @@ namespace ELibrary2.LibraryAccount
             {
                 CheckDublicateBook();
                 if (this.Errors.Count == 0) AddNewBookAtDB();
+               
             }
             catch (Exception)
             {
@@ -94,15 +96,9 @@ namespace ELibrary2.LibraryAccount
                 string bookCode = this.bookCode;
                 //add book at db
                 string query = $"Select* from Books  Where library_id='{this.UserId}' and " +
-                    $"book_name='{this.BookName}' and  author='{authorName}';";
-                DataTable dtbl = db.SelectQueryFromDB(query);
-                if (dtbl.Rows.Count == 0)
-                {
-                    query = $"Select* from Books Where book_code='{this.BookCode}';";
-                    dtbl = db.SelectQueryFromDB(query);
-                    if (dtbl.Rows.Count> 0) this.Errors.Add("Номера на книгата се доблира с друг номер!");
-                }
-                else this.Errors.Add("Тази книга с този автор е била добавена!");
+                    $"book_name='{this.BookName}' and  author='{authorName}' and book_code='{this.BookCode}';";
+               DataTable dtbl = db.SelectQueryFromDB(query);
+               if (dtbl.Rows.Count> 0) this.Errors.Add("Книгата се доблира с друга!");            
             }
             catch (Exception)
             {
@@ -124,7 +120,8 @@ namespace ELibrary2.LibraryAccount
                 string bookCode = this.bookCode;
                 //add book at db
                 string query = $"INSERT INTO Books (id,library_id, book_name, author, genre_id,book_code) " +
-                $"VALUES ('{id}','{this.UserId}', '{bookName}', '{authorName}','{idGenre}',{bookCode});";
+                $"VALUES ('{id}','{this.UserId}', '{bookName}', '{authorName}','{idGenre}','{bookCode}');";
+                //this.Errors.Add($"query insert= {query}");
                 db.InsertQueryAtDB(query);
             }
             catch (Exception)

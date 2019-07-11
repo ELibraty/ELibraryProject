@@ -67,6 +67,24 @@ namespace ELibrary2.LibraryAccount {
         protected global::System.Web.UI.WebControls.TextBox txtBookCodeSearch;
         
         /// <summary>
+        /// ddlSortAddedBook control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlSortAddedBook;
+        
+        /// <summary>
+        /// ddlCountBookAtPage control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.DropDownList ddlCountBookAtPage;
+        
+        /// <summary>
         /// btnSearch control.
         /// </summary>
         /// <remarks>
@@ -83,6 +101,15 @@ namespace ELibrary2.LibraryAccount {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.GridView gdvAddedBook;
+        
+        /// <summary>
+        /// pnhPages control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.PlaceHolder pnhPages;
         
         /// <summary>
         /// UpdatePanel1 control.
@@ -112,6 +139,15 @@ namespace ELibrary2.LibraryAccount {
         protected global::System.Web.UI.WebControls.Label lblSuccessfulAddBookMessage;
         
         /// <summary>
+        /// txtBookCode control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.TextBox txtBookCode;
+        
+        /// <summary>
         /// txtBookName control.
         /// </summary>
         /// <remarks>
@@ -128,15 +164,6 @@ namespace ELibrary2.LibraryAccount {
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.TextBox txtAuthorName;
-        
-        /// <summary>
-        /// txtBookCode control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.TextBox txtBookCode;
         
         /// <summary>
         /// ddlGenreAddBook control.
