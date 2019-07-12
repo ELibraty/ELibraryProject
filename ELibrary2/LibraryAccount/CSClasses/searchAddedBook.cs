@@ -75,7 +75,7 @@ namespace ELibrary2.LibraryAccount
 
                 default: ordeyBy = $"ORDER BY book_name ASC"; break;
             }
-            string query = $"Select ROW_NUMBER() OVER ({ordeyBy}) AS counter, book_code, book_name, author, Genres.genre as genre";
+            string query = $"Select Books.id,ROW_NUMBER() OVER ({ordeyBy}) AS counter, book_code, book_name, author, Genres.genre as genre";
             query += $" from Books Inner join Genres On Genres.id=Books.genre_id ";
             query += $" where library_id='{userId}'";
             if (this.BookName != "") query+=$" and book_name LIKE '%{this.BookName}%'";

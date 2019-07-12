@@ -15,19 +15,7 @@ namespace ELibrary2.LibraryAccount
         protected void Page_Load(object sender, EventArgs e)
         {
             SetGenreDate();
-            SetAddedBook();
-            /*String newPageButton = new Button();
-            newPageButton.Text = "1";
-            
-            string newPageButton= "<asp:Button Text="Напред > " runat="server" class="btn btn-primary btn - block" />"
-            lblPages.Text += newPageButton;*/
-         
-        }
-
-        private void Load_Items(object sender, CommandEventArgs e)
-        {
-            int id = Convert.ToInt32(e.CommandArgument);
-            // Do something with id
+            SetAddedBook();         
         }
 
         protected void SetGenreDate()
@@ -56,36 +44,51 @@ namespace ELibrary2.LibraryAccount
             string sortMethod = ddlSortAddedBook.SelectedValue;
 
             countBookAtPage = int.Parse(ddlCountBookAtPage.SelectedValue);
-            SearchAddedBook searchAddedBook = new SearchAddedBook(userId,bookName,aucthorName,genre, bookCode, sortMethod, currentPage, countBookAtPage);
+            SearchAddedBook searchAddedBook = new SearchAddedBook(userId, bookName, aucthorName, genre, bookCode, sortMethod, currentPage, countBookAtPage);
             DataTable dtbl = searchAddedBook.GetAddedBook();
             gdvAddedBook.DataSource = dtbl;
             gdvAddedBook.DataBind();
 
             int pagesOfAddedBook = searchAddedBook.GetPagesOfAddedBook();
             pnhPages.Controls.Clear();
+            bool flag = false;
             for (int i = 1; i <= pagesOfAddedBook; i++)
             {
-                Button button = new Button();
-                button.Click += new EventHandler(changePage);
-                button.Text += i.ToString();
-                button.CssClass = "btn btn-primary btn-block col-1 col-sm-1 col-md-1";
-                button.ID = "btnPage" + i;
-                button.CommandArgument = i.ToString();
-                //button.Command += Load_Items;
+                if ((i % 10 == 0)&&(i < pagesOfAddedBook))
+                {
+                    flag = true;
+                    break;
+                }
+                Button button = MakeButton(i);
                 pnhPages.Controls.Add(button);
 
+
             }
+            if (flag == true)
+            {
+                Label label = new Label();
+                label.Text = "...";
+                label.CssClass = "col-1 col-sm-1 col-md-1";
+                pnhPages.Controls.Add(label);
+
+                Button button = MakeButton(pagesOfAddedBook);
+                pnhPages.Controls.Add(button);
+            }
+
         }
 
-        protected void changePage(object sender, EventArgs e)
+        private Button MakeButton(int pageNumber)
         {
-            Button button = (Button)sender;
-            lblMyLabel.Text = button.ID;
-            string id = button.ID;
-            string pageString = id.Substring(7, id.Length-7);
-            currentPage = int.Parse(pageString);
-            SetAddedBook();
+            Button button = new Button();
+            button.Click += new EventHandler(changePage);
+            button.Text += pageNumber.ToString();
+            button.CssClass = "btn btn-primary btn-block col-1 col-sm-1 col-md-1";
+            button.ID = "btnPage" + pageNumber;
+            button.CommandArgument = pageNumber.ToString();
+            return button;
         }
+
+       
 
         protected void addNewBook_Click(object sender, EventArgs e)
         {
@@ -137,12 +140,24 @@ namespace ELibrary2.LibraryAccount
 
         protected void btnEdit_Click(object sender, ImageClickEventArgs e)
         {
-
+            
         }
 
         protected void btnDelete_Click(object sender, ImageClickEventArgs e)
         {
 
+        }
+
+      
+
+        protected void changePage(object sender, EventArgs e)
+        {
+            Button button = (Button)sender;
+            lblMyLabel.Text = button.ID;
+            string id = button.ID;
+            string pageString = id.Substring(7, id.Length - 7);
+            currentPage = int.Parse(pageString);
+            SetAddedBook();
         }
     }
 }

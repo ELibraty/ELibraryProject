@@ -58,7 +58,7 @@
                     <div class="form-group row">
                         <label class="text-black col-md-3 control-label ">Брой книги на станица:*</label>
                         <asp:DropDownList ID="ddlCountBookAtPage" runat="server" class="col-3 col-sm-3 col-md-3">
-                            <asp:ListItem Enabled="true" Text="10"></asp:ListItem>
+                            <asp:ListItem Enabled="true" Text="1"></asp:ListItem>
                             <asp:ListItem Enabled="true" Text="15"></asp:ListItem>
                             <asp:ListItem Enabled="true" Text="20"></asp:ListItem>
                         </asp:DropDownList>
@@ -93,12 +93,12 @@
                             <asp:BoundField HeaderText="Жанр" DataField="genre"/>
                             <asp:TemplateField  HeaderText="Редактиране">
                                 <ItemTemplate>
-                                    <asp:ImageButton ImageUrl="../img/bg-img/edit.png" runat="server"  ID="btnEdit" CommandArgument='<%# Eval("counter") %>' OnClick="btnEdit_Click"/>
+                                    <asp:ImageButton ImageUrl="../img/bg-img/edit.png" runat="server"  ID="btnEdit" CommandArgument='<%# Eval("id") %>' OnClick="btnEdit_Click"/>
                                 </ItemTemplate>
                             </asp:TemplateField>
                                 <asp:TemplateField  HeaderText="Изтрий книгата">
                                 <ItemTemplate>
-                                    <asp:ImageButton ImageUrl="../img/bg-img/x.png" runat="server"  ID="btnDelete" CommandArgument='<%# Eval("counter") %>' OnClick="btnDelete_Click"/>
+                                    <asp:ImageButton ImageUrl="../img/bg-img/x.png" runat="server"  ID="btnDelete"  data-toggle="modal"  data-target="#appDeleteBook" CommandArgument='<%# Eval("id") %>'/>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -145,58 +145,92 @@
         </ContentTemplate>
     </asp:UpdatePanel>
 
-     <!-- ***** Blog Message Start ***** -->
-     <div class="container">
-        <div class="modal fade" id="appAddNewBook" role="dialog">
-           <asp:UpdatePanel ID="UpdatePanel1" runat="server">
-                <ContentTemplate>
-                  <div class="modal-dialog modal-lg">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h4 class="modal-title">
-                               Добавяне на нова книга
-                            </h4>
-                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+    <!-- ***** Blog Message Start ***** -->
+    <!-- ***** Add Book ***** -->
+    <div class="container">
+    <div class="modal fade" id="appAddNewBook" role="dialog">
+        <asp:UpdatePanel ID="UpdatePanel1" runat="server">
+            <ContentTemplate>
+                <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            Добавяне на нова книга
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <div class="modal-body scroow">
+                        <div class="form-group row">
+                            <asp:Label class="col-md-12" id="lblFailedAddBookMessage" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
+                            <asp:Label class="col-md-12" id="lblSuccessfulAddBookMessage" runat="server" Text="" ForeColor="Green" Visible="false"></asp:Label>
+                        </div>
+                        <div class="form-group row">
+                            <label class="text-black col-md-3 control-label ">Код на книгата:*</label>
+                            <asp:TextBox id="txtBookCode"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
+                        </div>
+                           
+                        <div class="form-group row">
+                            <label class="text-black col-md-3 control-label ">Име на книгата:*</label>
+                            <asp:TextBox id="txtBookName"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
                         </div>
 
-                        <div class="modal-body scroow">
-                            <div class="form-group row">
-                                <asp:Label class="col-md-12" id="lblFailedAddBookMessage" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
-                                <asp:Label class="col-md-12" id="lblSuccessfulAddBookMessage" runat="server" Text="" ForeColor="Green" Visible="false"></asp:Label>
-                            </div>
-                            <div class="form-group row">
-                                <label class="text-black col-md-3 control-label ">Код на книгата:*</label>
-                                <asp:TextBox id="txtBookCode"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
-                            </div>
-                           
-                            <div class="form-group row">
-                                <label class="text-black col-md-3 control-label ">Име на книгата:*</label>
-                                <asp:TextBox id="txtBookName"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
-                            </div>
-
-                            <div class="form-group row">
-                                <label class="text-black col-md-3 control-label ">Име на автора:*</label>
-                                <asp:TextBox id="txtAuthorName"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
-                            </div>
+                        <div class="form-group row">
+                            <label class="text-black col-md-3 control-label ">Име на автора:*</label>
+                            <asp:TextBox id="txtAuthorName"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
+                        </div>
 
                             
 
-                            <div class="form-group row">
-                                <label class="text-black col-md-3 control-label " for="email">Жанр:*</label>
-                                <asp:DropDownList ID="ddlGenreAddBook" runat="server" class="col-3 col-sm-3 col-md-3">
-                                    <asp:ListItem Enabled="true" Text="Жанр" Value="-1"></asp:ListItem>
-                                </asp:DropDownList>
-                            </div>                               
-                        </div>
+                        <div class="form-group row">
+                            <label class="text-black col-md-3 control-label " for="email">Жанр:*</label>
+                            <asp:DropDownList ID="ddlGenreAddBook" runat="server" class="col-3 col-sm-3 col-md-3">
+                                <asp:ListItem Enabled="true" Text="Жанр" Value="-1"></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>                               
+                    </div>
 
 
-                        <div class="modal-footer container">
-                            <asp:Button ID="addNewBook" runat="server" Text="Добави книгата" class="btn btn-primary btn-block col-md-3" OnClick="addNewBook_Click"/>
-                        </div>
-                    </div>                    
-                </div>
-              </ContentTemplate>
-            </asp:UpdatePanel>
-         </div>
-      </div>
+                    <div class="modal-footer container">
+                        <asp:Button ID="addNewBook" runat="server" Text="Добави книгата" class="btn btn-primary btn-block col-md-3" OnClick="addNewBook_Click"/>
+                    </div>
+                </div>                    
+            </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        </div>
+    </div>
+    <!-- ***** Add Book ***** -->
+
+
+     <!-- ***** Delete Book ***** -->
+    <div class="container">
+    <div class="modal fade" id="appDeleteBook" role="dialog">
+        <asp:UpdatePanel ID="UpdatePanel3" runat="server">
+            <ContentTemplate>
+                <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                            Изтриване на книга
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <div class="modal-body scroow">
+                        Сигурни ли сте, че искате да изтриите избраната книга?                       
+                    </div>
+
+
+                    <div class="modal-footer container">
+                        <button type="button" data-dismiss="modal" class="btn btn-primary btn-block col-md-3">Отказ</button>
+                        <asp:Button ID="btnDelete" runat="server" Text="Изтрий" class="btn btn-primary btn-block col-md-3" OnClick="btnDelete_Click"/>
+                    </div>
+                </div>                    
+            </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        </div>
+    </div>
+    <!-- ***** Delete Book ***** -->
 </asp:Content>
