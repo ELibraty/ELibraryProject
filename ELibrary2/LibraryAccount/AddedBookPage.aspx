@@ -58,7 +58,7 @@
                     <div class="form-group row">
                         <label class="text-black col-md-3 control-label ">Брой книги на станица:*</label>
                         <asp:DropDownList ID="ddlCountBookAtPage" runat="server" class="col-3 col-sm-3 col-md-3">
-                            <asp:ListItem Enabled="true" Text="2"></asp:ListItem>
+                            <asp:ListItem Enabled="true" Text="10"></asp:ListItem>
                             <asp:ListItem Enabled="true" Text="15"></asp:ListItem>
                             <asp:ListItem Enabled="true" Text="20"></asp:ListItem>
                         </asp:DropDownList>
@@ -73,16 +73,16 @@
          </div>
          </section>
          <!-- ***** Search Area End ***** --> 
-
          <!-- ***** View Added Book Area Start ***** -->
          <section class="dentist-area section-padding-100-0">
          <div class="container">
             <div class="row ">
+                <asp:Label Text="text" runat="server" id="lblMyLabel"/>
                 <div class="col-12 col-sm-12 col-md-12" style="border-radius:20px;">        
                     <asp:GridView  ID="gdvAddedBook" runat="server"  AutoGenerateColumns="False" CellPadding="8" ForeColor="#333333" Width="100%">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
-                            <asp:BoundField HeaderText="№" DataField="id">
+                            <asp:BoundField HeaderText="№" DataField="counter">
                             <FooterStyle Width="10%" />
                             <HeaderStyle Width="10%" />
                             <ItemStyle Width="10%" />
@@ -93,12 +93,12 @@
                             <asp:BoundField HeaderText="Жанр" DataField="genre"/>
                             <asp:TemplateField  HeaderText="Редактиране">
                                 <ItemTemplate>
-                                    <asp:ImageButton ImageUrl="../img/bg-img/edit.png" runat="server"  ID="btnEdit" CommandArgument='<%# Eval("id") %>' OnClick="btnEdit_Click"/>
+                                    <asp:ImageButton ImageUrl="../img/bg-img/edit.png" runat="server"  ID="btnEdit" CommandArgument='<%# Eval("counter") %>' OnClick="btnEdit_Click"/>
                                 </ItemTemplate>
                             </asp:TemplateField>
                                 <asp:TemplateField  HeaderText="Изтрий книгата">
                                 <ItemTemplate>
-                                    <asp:ImageButton ImageUrl="../img/bg-img/x.png" runat="server"  ID="btnDelete" CommandArgument='<%# Eval("id") %>' OnClick="btnDelete_Click"/>
+                                    <asp:ImageButton ImageUrl="../img/bg-img/x.png" runat="server"  ID="btnDelete" CommandArgument='<%# Eval("counter") %>' OnClick="btnDelete_Click"/>
                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>

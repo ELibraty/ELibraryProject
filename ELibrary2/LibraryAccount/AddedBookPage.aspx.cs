@@ -10,6 +10,8 @@ namespace ELibrary2.LibraryAccount
 {
     public partial class WebForm3 : System.Web.UI.Page
     {
+        int countBookAtPage, currentPage = 1;
+
         protected void Page_Load(object sender, EventArgs e)
         {
             SetGenreDate();
@@ -53,33 +55,36 @@ namespace ELibrary2.LibraryAccount
             string bookCode = txtBookCodeSearch.Text;
             string sortMethod = ddlSortAddedBook.SelectedValue;
 
-            int countBookAtPage = int.Parse(ddlCountBookAtPage.SelectedValue);
-            int currentPage = 1;
+            countBookAtPage = int.Parse(ddlCountBookAtPage.SelectedValue);
             SearchAddedBook searchAddedBook = new SearchAddedBook(userId,bookName,aucthorName,genre, bookCode, sortMethod, currentPage, countBookAtPage);
             DataTable dtbl = searchAddedBook.GetAddedBook();
             gdvAddedBook.DataSource = dtbl;
             gdvAddedBook.DataBind();
 
             int pagesOfAddedBook = searchAddedBook.GetPagesOfAddedBook();
+            pnhPages.Controls.Clear();
             for (int i = 1; i <= pagesOfAddedBook; i++)
             {
-                var button = new Button
-                {
-                    ID = "btnPage" + i,
-                    CommandArgument = i.ToString(),
-                    Text = i.ToString(),
-                    OnClientClick = "btn_Click",
-                    CssClass = "btn btn-primary btn-block col-1 col-sm-1 col-md-1"
-                };
-                button.Command += Load_Items;
+                Button button = new Button();
+                button.Click += new EventHandler(changePage);
+                button.Text += i.ToString();
+                button.CssClass = "btn btn-primary btn-block col-1 col-sm-1 col-md-1";
+                button.ID = "btnPage" + i;
+                button.CommandArgument = i.ToString();
+                //button.Command += Load_Items;
                 pnhPages.Controls.Add(button);
 
             }
         }
 
-        void changePage(object sender, EventArgs e)
+        protected void changePage(object sender, EventArgs e)
         {
-
+            Button button = (Button)sender;
+            lblMyLabel.Text = button.ID;
+            string id = button.ID;
+            string pageString = id.Substring(7, id.Length-7);
+            currentPage = int.Parse(pageString);
+            SetAddedBook();
         }
 
         protected void addNewBook_Click(object sender, EventArgs e)
@@ -123,11 +128,7 @@ namespace ELibrary2.LibraryAccount
             //ddlGenreAddBook.Items[0].Selected=true;
             txtBookCode.Text="";               
         }
-
-        protected void lnkButton_Click(object sender, EventArgs e)
-        {
-
-        }
+        
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {

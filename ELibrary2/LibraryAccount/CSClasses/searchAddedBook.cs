@@ -12,7 +12,7 @@ namespace ELibrary2.LibraryAccount
         private string bookName, authorName;
         private string genre, bookCode, sortMethod;
         private List<string> errors;
-        private int userId, genreId, countBookAtPage;
+        private int userId, genreId, countBookAtPage, currentPage;
         public SearchAddedBook(int userId, string bookName,
             string authorName, string genre, string bookCode, string sortMethod,
             int currentPage, int countBookAtPage)
@@ -25,6 +25,7 @@ namespace ELibrary2.LibraryAccount
             this.UserId = userId;
             this.BookCode = bookCode;
             this.SortMethod = sortMethod;
+            this.CurrentPage = currentPage;
             if (this.Genre != "Жанр")
             {
                 DBClass db = new DBClass();
@@ -49,6 +50,7 @@ namespace ELibrary2.LibraryAccount
         private int GenreId { get => genreId; set => genreId = value; }
         public string SortMethod { get => sortMethod; set => sortMethod = value; }
         public int CountBookAtPage { get => countBookAtPage; set => countBookAtPage = value; }
+        public int CurrentPage { get => currentPage; set => currentPage = value; }
 
         public DataTable GetAddedBook()
         {
@@ -73,17 +75,25 @@ namespace ELibrary2.LibraryAccount
 
                 default: ordeyBy = $"ORDER BY book_name ASC"; break;
             }
-            string query = $"Select ROW_NUMBER() OVER ({ordeyBy}) AS id, book_code, book_name, author, Genres.genre as genre";
+            string query = $"Select ROW_NUMBER() OVER ({ordeyBy}) AS counter, book_code, book_name, author, Genres.genre as genre";
             query += $" from Books Inner join Genres On Genres.id=Books.genre_id ";
             query += $" where library_id='{userId}'";
             if (this.BookName != "") query+=$" and book_name LIKE '%{this.BookName}%'";
             if (this.AuthorName != "") query += $" and author LIKE '%{this.AuthorName}%'";
             if (this.BookCode != "") query += $" and book_code LIKE '%{this.BookCode}%'";
-
             if (this.GenreId != -1) query += $" and genre_id='{this.GenreId}'";
+            int bookAtPage = this.CountBookAtPage;
+            int currentPage = this.CurrentPage;
+            //query += $" {ordeyBy}";
+            int rowFrom = (currentPage- 1) * bookAtPage;
+            int rowTo = (currentPage) * bookAtPage;
 
-            query += $" {ordeyBy};";
-            DataTable dtbl = db.SelectQueryFromDB(query);
+            string allQuery = $" WITH MyCte AS ({query}) ";
+            allQuery += $"SELECT *";//ROW_NUMBER() OVER ({ordeyBy}) AS id,book_code, book_name, author, genre";
+            allQuery += " FROM MyCte";
+            allQuery += $" WHERE counter >{rowFrom} and counter <={rowTo};";
+            this.Errors.Add(allQuery);
+            DataTable dtbl = db.SelectQueryFromDB(allQuery);
             return dtbl;
         }
 
@@ -98,7 +108,6 @@ namespace ELibrary2.LibraryAccount
             if (this.BookName != "") query += $" and book_name LIKE '%{this.BookName}%'";
             if (this.AuthorName != "") query += $" and author LIKE '%{this.AuthorName}%'";
             if (this.BookCode != "") query += $" and book_code LIKE '%{this.BookCode}%'";
-
             if (this.GenreId != -1) query += $" and genre_id='{this.GenreId}'";
             
             query += $";";
