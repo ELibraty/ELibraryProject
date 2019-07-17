@@ -58,7 +58,7 @@
                     <div class="form-group row">
                         <label class="text-black col-md-3 control-label ">Брой книги на станица:*</label>
                         <asp:DropDownList ID="ddlCountBookAtPage" runat="server" class="col-3 col-sm-3 col-md-3">
-                            <asp:ListItem Enabled="true" Text="1"></asp:ListItem>
+                            <asp:ListItem Enabled="true" Text="10"></asp:ListItem>
                             <asp:ListItem Enabled="true" Text="15"></asp:ListItem>
                             <asp:ListItem Enabled="true" Text="20"></asp:ListItem>
                         </asp:DropDownList>
@@ -79,7 +79,9 @@
             <div class="row ">
                 <asp:Label Text="text" runat="server" id="lblMyLabel"/>
                 <div class="col-12 col-sm-12 col-md-12" style="border-radius:20px;">        
-                    <asp:GridView  ID="gdvAddedBook" runat="server"  AutoGenerateColumns="False" CellPadding="8" ForeColor="#333333" Width="100%">
+                    <asp:GridView  ID="gdvAddedBook" runat="server" OnRowCommand="gdvAddedBook_RowCommand1"
+
+                        AutoGenerateColumns="False" CellPadding="8" ForeColor="#333333" Width="100%">
                         <AlternatingRowStyle BackColor="White" />
                         <Columns>
                             <asp:BoundField HeaderText="№" DataField="counter">
@@ -93,13 +95,18 @@
                             <asp:BoundField HeaderText="Жанр" DataField="genre"/>
                             <asp:TemplateField  HeaderText="Редактиране">
                                 <ItemTemplate>
-                                    <asp:ImageButton ImageUrl="../img/bg-img/edit.png" runat="server"  ID="btnEdit" CommandArgument='<%# Eval("id") %>' OnClick="btnEdit_Click"/>
+                                    <asp:ImageButton ImageUrl="../img/bg-img/edit.png" runat="server"  ID="btnEdit" CommandArgument='<%# Eval("id") %>'/>
                                 </ItemTemplate>
                             </asp:TemplateField>
-                                <asp:TemplateField  HeaderText="Изтрий книгата">
+                            <asp:TemplateField  HeaderText="Изтрий книгата">
                                 <ItemTemplate>
-                                    <asp:ImageButton ImageUrl="../img/bg-img/x.png" runat="server"  ID="btnDelete"  data-toggle="modal"  data-target="#appDeleteBook" CommandArgument='<%# Eval("id") %>'/>
-                                </ItemTemplate>
+                                    <asp:LinkButton id="btnProba" CommandName="proba" Text="proba" runat="server"  CommandArgument='<%# Eval("id") %>' />
+                                  <!--  <aasp dButton style="background-image: url(../img/bg-img/x.png);" runat="server" 
+                                        ID="btnGoDelete"  data-toggle="modal"  data-target="#appDeleteBook" 
+                                        CommandName="Delete" CommandArgument='<# Eval("id") %>' />
+                                    -->
+
+                                 </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
                         <HeaderStyle Width="100px" />
@@ -131,8 +138,7 @@
                         <asp:PlaceHolder runat="server" ID="pnhPages">
 
                         </asp:PlaceHolder>
-                    </div>
-                   
+                    </div>                   
                 </div>
                
                 <div class="col-2 col-sm-2 col-md-2">
@@ -178,9 +184,7 @@
                         <div class="form-group row">
                             <label class="text-black col-md-3 control-label ">Име на автора:*</label>
                             <asp:TextBox id="txtAuthorName"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
-                        </div>
-
-                            
+                        </div>                            
 
                         <div class="form-group row">
                             <label class="text-black col-md-3 control-label " for="email">Жанр:*</label>
@@ -189,7 +193,6 @@
                             </asp:DropDownList>
                         </div>                               
                     </div>
-
 
                     <div class="modal-footer container">
                         <asp:Button ID="addNewBook" runat="server" Text="Добави книгата" class="btn btn-primary btn-block col-md-3" OnClick="addNewBook_Click"/>
@@ -218,13 +221,14 @@
                     </div>
 
                     <div class="modal-body scroow">
-                        Сигурни ли сте, че искате да изтриите избраната книга?                       
+                        Сигурни ли сте, че искате да изтриите избраната книга?   
+                        <asp:Label Text="" id="lblDeleteBookId" runat="server" />
                     </div>
 
 
                     <div class="modal-footer container">
                         <button type="button" data-dismiss="modal" class="btn btn-primary btn-block col-md-3">Отказ</button>
-                        <asp:Button ID="btnDelete" runat="server" Text="Изтрий" class="btn btn-primary btn-block col-md-3" OnClick="btnDelete_Click"/>
+                        <asp:Button ID="btnDelete" runat="server" Text="Изтрий" class="btn btn-primary btn-block col-md-3"/>
                     </div>
                 </div>                    
             </div>

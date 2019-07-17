@@ -10,12 +10,13 @@ namespace ELibrary2.LibraryAccount
 {
     public partial class WebForm3 : System.Web.UI.Page
     {
-        int countBookAtPage, currentPage = 1;
+        int countBookAtPage, currentPage = 1, deleteBookId=2;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             SetGenreDate();
-            SetAddedBook();         
+            deleteBookId = 1;
+            SetAddedBook();
         }
 
         protected void SetGenreDate()
@@ -79,6 +80,7 @@ namespace ELibrary2.LibraryAccount
 
         private Button MakeButton(int pageNumber)
         {
+            
             Button button = new Button();
             button.Click += new EventHandler(changePage);
             button.Text += pageNumber.ToString();
@@ -131,24 +133,38 @@ namespace ELibrary2.LibraryAccount
             //ddlGenreAddBook.Items[0].Selected=true;
             txtBookCode.Text="";               
         }
-        
+
+        protected void btnGoDelete_Click(object sender, EventArgs e)
+        {
+        }
+
+        protected void btnClickMe_Click(object sender, EventArgs e)
+        {
+            lblMyLabel.Text = "asd";
+
+        }
+
+        protected void gdvAddedBook_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            string command = e.CommandName;
+            string id = e.CommandArgument.ToString();
+            lblMyLabel.Text= "command= " + command + " id=" + id;
+            lblDeleteBookId.Text ="command= "+command+" id="+ id;
+        }
+
+        protected void gdvAddedBook_RowCommand1(object sender, GridViewCommandEventArgs e)
+        {
+            string command = e.CommandName;
+            string id = e.CommandArgument.ToString();
+            lblMyLabel.Text = "command= " + command + " id=" + id;
+            lblDeleteBookId.Text = "command= " + command + " id=" + id;
+
+        }
 
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             SetAddedBook();
-        }
-
-        protected void btnEdit_Click(object sender, ImageClickEventArgs e)
-        {
-            
-        }
-
-        protected void btnDelete_Click(object sender, ImageClickEventArgs e)
-        {
-
-        }
-
-      
+        }   
 
         protected void changePage(object sender, EventArgs e)
         {
