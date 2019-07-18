@@ -48,5 +48,15 @@ namespace ELibrary2
             sqlCon.Close();
             return dtbl;
         }
+
+        public void DeleteRow(string query)
+        {
+            SqlConnection sqlCon = this.SqlCon;
+            SqlCommand command = new SqlCommand(query, sqlCon);
+            sqlCon.Open();
+            command.ExecuteNonQuery();
+            sqlCon.Close();
+
+        }
     }
 }

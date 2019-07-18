@@ -73,6 +73,7 @@
          </div>
          </section>
          <!-- ***** Search Area End ***** --> 
+
          <!-- ***** View Added Book Area Start ***** -->
          <section class="dentist-area section-padding-100-0">
          <div class="container">
@@ -100,12 +101,8 @@
                             </asp:TemplateField>
                             <asp:TemplateField  HeaderText="Изтрий книгата">
                                 <ItemTemplate>
-                                    <asp:LinkButton id="btnProba" CommandName="proba" Text="proba" runat="server"  CommandArgument='<%# Eval("id") %>' />
-                                  <!--  <aasp dButton style="background-image: url(../img/bg-img/x.png);" runat="server" 
-                                        ID="btnGoDelete"  data-toggle="modal"  data-target="#appDeleteBook" 
-                                        CommandName="Delete" CommandArgument='<# Eval("id") %>' />
-                                    -->
-
+                                    <asp:LinkButton  runat="server" CommandName="DeleteBook"
+                                        Text="Изтрий" CommandArgument='<%# Eval("id") %>' data-toggle="modal" data-target="#appDeleteBook" />
                                  </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -228,7 +225,7 @@
 
                     <div class="modal-footer container">
                         <button type="button" data-dismiss="modal" class="btn btn-primary btn-block col-md-3">Отказ</button>
-                        <asp:Button ID="btnDelete" runat="server" Text="Изтрий" class="btn btn-primary btn-block col-md-3"/>
+                        <asp:Button ID="btnDelete" runat="server" Text="Изтрий" class="btn btn-primary btn-block col-md-3" OnClick="btnDelete_Click"/>
                     </div>
                 </div>                    
             </div>

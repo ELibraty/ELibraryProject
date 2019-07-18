@@ -10,12 +10,12 @@ namespace ELibrary2.LibraryAccount
 {
     public partial class WebForm3 : System.Web.UI.Page
     {
-        int countBookAtPage, currentPage = 1, deleteBookId=2;
+        int countBookAtPage, currentPage = 1, viewBookId=2;
 
         protected void Page_Load(object sender, EventArgs e)
         {
             SetGenreDate();
-            deleteBookId = 1;
+            viewBookId = 1;
             SetAddedBook();
         }
 
@@ -134,31 +134,20 @@ namespace ELibrary2.LibraryAccount
             txtBookCode.Text="";               
         }
 
-        protected void btnGoDelete_Click(object sender, EventArgs e)
-        {
-        }
-
-        protected void btnClickMe_Click(object sender, EventArgs e)
-        {
-            lblMyLabel.Text = "asd";
-
-        }
-
-        protected void gdvAddedBook_RowCommand(object sender, GridViewCommandEventArgs e)
-        {
-            string command = e.CommandName;
-            string id = e.CommandArgument.ToString();
-            lblMyLabel.Text= "command= " + command + " id=" + id;
-            lblDeleteBookId.Text ="command= "+command+" id="+ id;
-        }
-
         protected void gdvAddedBook_RowCommand1(object sender, GridViewCommandEventArgs e)
         {
             string command = e.CommandName;
-            string id = e.CommandArgument.ToString();
-            lblMyLabel.Text = "command= " + command + " id=" + id;
-            lblDeleteBookId.Text = "command= " + command + " id=" + id;
+            viewBookId = int.Parse(e.CommandArgument.ToString());
+            lblMyLabel.Text = viewBookId.ToString();
+        }
 
+        protected void btnDelete_Click(object sender, EventArgs e)
+        {
+            /*DeleteBook deleteBook = new DeleteBook(viewBookId);
+            deleteBook.Delete();*/
+            lblDeleteBookId.Text = $"viewBookId={viewBookId}";//string.Join(" ", deleteBook.Errors);
+
+          // SetAddedBook();
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)

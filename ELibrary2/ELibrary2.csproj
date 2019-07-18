@@ -2946,8 +2946,9 @@
     <Compile Include="AdminAccount\newWebFormAdmin.aspx.designer.cs">
       <DependentUpon>newWebFormAdmin.aspx</DependentUpon>
     </Compile>
-    <Compile Include="LibraryAccount\CSClasses\AddBook.cs" />
-    <Compile Include="LibraryAccount\CSClasses\SearchAddedBook.cs" />
+    <Compile Include="LibraryAccount\CSClasses\AddedBookPage\AddBook.cs" />
+    <Compile Include="LibraryAccount\CSClasses\AddedBookPage\SearchAddedBook.cs" />
+    <Compile Include="LibraryAccount\CSClasses\AddedBookPage\DeleteBook.cs" />
     <Compile Include="LibraryAccount\LibraryAccount.Master.cs">
       <DependentUpon>LibraryAccount.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
