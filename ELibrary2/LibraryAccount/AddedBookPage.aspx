@@ -101,8 +101,8 @@
                             </asp:TemplateField>
                             <asp:TemplateField  HeaderText="Изтрий книгата">
                                 <ItemTemplate>
-                                    <asp:LinkButton  runat="server" CommandName="DeleteBook"
-                                        Text="Изтрий" CommandArgument='<%# Eval("id") %>' data-toggle="modal" data-target="#appDeleteBook" />
+                                    <asp:LinkButton  runat="server" CommandName="DeleteBook" UseSubmitBehavior="false" 
+                                        Text="Изтрий" CommandArgument='<%# Eval("id") %>' />
                                  </ItemTemplate>
                             </asp:TemplateField>
                         </Columns>
@@ -168,6 +168,7 @@
                             <asp:Label class="col-md-12" id="lblFailedAddBookMessage" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
                             <asp:Label class="col-md-12" id="lblSuccessfulAddBookMessage" runat="server" Text="" ForeColor="Green" Visible="false"></asp:Label>
                         </div>
+
                         <div class="form-group row">
                             <label class="text-black col-md-3 control-label ">Код на книгата:*</label>
                             <asp:TextBox id="txtBookCode"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>

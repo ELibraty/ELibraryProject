@@ -15,7 +15,7 @@ namespace ELibrary2.LibraryAccount
         protected void Page_Load(object sender, EventArgs e)
         {
             SetGenreDate();
-            viewBookId = 1;
+            viewBookId = -1;
             SetAddedBook();
         }
 
@@ -139,15 +139,20 @@ namespace ELibrary2.LibraryAccount
             string command = e.CommandName;
             viewBookId = int.Parse(e.CommandArgument.ToString());
             lblMyLabel.Text = viewBookId.ToString();
+            lblDeleteBookId.Text = viewBookId.ToString();
+            //lblDeleteBookId.Visible = false;
+
+            ScriptManager.RegisterStartupScript(this, this.GetType(), "Your Comment", "$('#appDeleteBook').modal('show');;", true);
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
         {
-            /*DeleteBook deleteBook = new DeleteBook(viewBookId);
-            deleteBook.Delete();*/
+            viewBookId = int.Parse(lblDeleteBookId.Text);
+            DeleteBook deleteBook = new DeleteBook(viewBookId);
+            deleteBook.Delete();
             lblDeleteBookId.Text = $"viewBookId={viewBookId}";//string.Join(" ", deleteBook.Errors);
 
-          // SetAddedBook();
+            SetAddedBook();
         }
 
         protected void btnSearch_Click(object sender, EventArgs e)
