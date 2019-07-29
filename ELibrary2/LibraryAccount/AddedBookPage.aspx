@@ -96,7 +96,8 @@
                             <asp:BoundField HeaderText="Жанр" DataField="genre"/>
                             <asp:TemplateField  HeaderText="Редактиране">
                                 <ItemTemplate>
-                                    <asp:ImageButton ImageUrl="../img/bg-img/edit.png" runat="server"  ID="btnEdit" CommandArgument='<%# Eval("id") %>'/>
+                                      <asp:LinkButton  runat="server" CommandName="EditBook" UseSubmitBehavior="false" 
+                                        Text="Редактирай" CommandArgument='<%# Eval("id") %>' />
                                 </ItemTemplate>
                             </asp:TemplateField>
                             <asp:TemplateField  HeaderText="Изтрий книгата">
@@ -171,22 +172,22 @@
 
                         <div class="form-group row">
                             <label class="text-black col-md-3 control-label ">Код на книгата:*</label>
-                            <asp:TextBox id="txtBookCode"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
+                            <asp:TextBox id="txtBookCodeAdd"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
                         </div>
                            
                         <div class="form-group row">
                             <label class="text-black col-md-3 control-label ">Име на книгата:*</label>
-                            <asp:TextBox id="txtBookName"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
+                            <asp:TextBox id="txtBookNameAdd"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
                         </div>
 
                         <div class="form-group row">
                             <label class="text-black col-md-3 control-label ">Име на автора:*</label>
-                            <asp:TextBox id="txtAuthorName"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
+                            <asp:TextBox id="txtAuthorNameAdd"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
                         </div>                            
 
                         <div class="form-group row">
                             <label class="text-black col-md-3 control-label " for="email">Жанр:*</label>
-                            <asp:DropDownList ID="ddlGenreAddBook" runat="server" class="col-3 col-sm-3 col-md-3">
+                            <asp:DropDownList ID="ddlGenreAdd" runat="server" class="col-3 col-sm-3 col-md-3">
                                 <asp:ListItem Enabled="true" Text="Жанр" Value="-1"></asp:ListItem>
                             </asp:DropDownList>
                         </div>                               
@@ -201,7 +202,7 @@
         </asp:UpdatePanel>
         </div>
     </div>
-    <!-- ***** Add Book ***** -->
+    <!-- ***** Add Book END***** -->
 
 
      <!-- ***** Delete Book ***** -->
@@ -234,5 +235,59 @@
         </asp:UpdatePanel>
         </div>
     </div>
-    <!-- ***** Delete Book ***** -->
+    <!-- ***** Delete Book END ***** -->
+
+    <!-- ***** Edit Book ***** -->
+    <div class="container">
+    <div class="modal fade" id="appEditBook" role="dialog">
+        <asp:UpdatePanel ID="UpdatePanel4" runat="server">
+            <ContentTemplate>
+                <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title">
+                           Редактиране на книга
+                        </h4>
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    </div>
+
+                    <div class="modal-body scroow">
+                        <div class="form-group row">
+                            <asp:Label class="col-md-12" id="lblFailedEditBookMessage" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
+                            <asp:Label class="col-md-12" id="lblSuccessfulEditBookMessage" runat="server" Text="" ForeColor="Green" Visible="false"></asp:Label>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="text-black col-md-3 control-label">Код на книгата:*</label>
+                            <asp:TextBox id="txtBookCodeEdit"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
+                        </div>
+                           
+                        <div class="form-group row">
+                            <label class="text-black col-md-3 control-label">Име на книгата:*</label>
+                            <asp:TextBox id="txtBookNameEdit"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
+                        </div>
+
+                        <div class="form-group row">
+                            <label class="text-black col-md-3 control-label">Име на автора:*</label>
+                            <asp:TextBox id="txtAuthorNameEdit"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
+                        </div>                            
+
+                        <div class="form-group row">
+                            <label class="text-black col-md-3 control-label" for="email">Жанр:*</label>
+                            <asp:DropDownList ID="ddlGenreEdit" runat="server" class="col-3 col-sm-3 col-md-3">
+                                <asp:ListItem Enabled="true" Text="Жанр" Value="-1"></asp:ListItem>
+                            </asp:DropDownList>
+                        </div>                               
+                    </div>
+
+                    <div class="modal-footer container">
+                        <asp:Button ID="btnEditBook" runat="server" Text="Редактирай книгата" class="btn btn-primary btn-block col-md-3" OnClick="btnEditBook_Click"/>
+                    </div>
+                </div>                    
+            </div>
+            </ContentTemplate>
+        </asp:UpdatePanel>
+        </div>
+    </div>
+    <!-- ***** Edit Book END ***** -->
 </asp:Content>

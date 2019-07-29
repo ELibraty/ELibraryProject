@@ -89,11 +89,18 @@ namespace ELibrary2.LibraryAccount
             int rowTo = (currentPage) * bookAtPage;
 
             string allQuery = $" WITH MyCte AS ({query}) ";
-            allQuery += $"SELECT *";//ROW_NUMBER() OVER ({ordeyBy}) AS id,book_code, book_name, author, genre";
+            allQuery += $"SELECT *";
             allQuery += " FROM MyCte";
             allQuery += $" WHERE counter >{rowFrom} and counter <={rowTo};";
-            this.Errors.Add(allQuery);
             DataTable dtbl = db.SelectQueryFromDB(allQuery);
+            if(dtbl.Rows.Count==0)
+            {
+                
+                DataRow dataRow= dtbl.NewRow();
+                
+                dataRow["book_name"] = "Няма добавени книги!";                
+                dtbl.Rows.Add(dataRow);
+            }
             return dtbl;
         }
 

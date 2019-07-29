@@ -15,7 +15,6 @@ namespace ELibrary2.LibraryAccount
         protected void Page_Load(object sender, EventArgs e)
         {
             SetGenreDate();
-            viewBookId = -1;
             SetAddedBook();
         }
 
@@ -25,12 +24,21 @@ namespace ELibrary2.LibraryAccount
             string query = $"Select* from Genres order by genre asc;";
             db.SelectQueryFromDB(query);
             DataTable dtbl = db.SelectQueryFromDB(query);
+            ddlGenreAdd.Items.Clear();
+            ddlGenreSearch.Items.Clear();
+            ddlGenreEdit.Items.Clear();
+            ListItem item = new ListItem("Жанр", "Жанр");
+            ddlGenreSearch.Items.Add(item);
+            ddlGenreAdd.Items.Add(item);
+            ddlGenreEdit.Items.Add(item);
+
             for (int i = 0; i < dtbl.Rows.Count; i++)
             {
                 string genreName = dtbl.Rows[i][1].ToString();
-                ListItem item = new ListItem(genreName, genreName);
+                item = new ListItem(genreName, genreName);
                 ddlGenreSearch.Items.Add(item);
-                ddlGenreAddBook.Items.Add(item);
+                ddlGenreAdd.Items.Add(item);
+                ddlGenreEdit.Items.Add(item);
             }
         }
 
@@ -95,10 +103,10 @@ namespace ELibrary2.LibraryAccount
         protected void addNewBook_Click(object sender, EventArgs e)
         {
             int userId = int.Parse(Session["UserId"].ToString()) ;
-            string bookName = txtBookName.Text;
-            string authorName = txtAuthorName.Text;
-            string genre = ddlGenreAddBook.SelectedValue;
-            string bookCode = txtBookCode.Text;
+            string bookName = txtBookNameAdd.Text;
+            string authorName = txtAuthorNameAdd.Text;
+            string genre = ddlGenreAdd.SelectedValue;
+            string bookCode = txtBookCodeAdd.Text;
             AddBook newBook = new AddBook(userId, bookName, authorName, genre, bookCode);
            
             newBook.AddNewBook();
@@ -127,22 +135,41 @@ namespace ELibrary2.LibraryAccount
 
         private void ClearAddNewBookData()
         {
-            txtBookName.Text="";
-            txtAuthorName.Text="";
+            txtBookNameAdd.Text="";
+            txtAuthorNameAdd.Text="";
             //dropdownlist.Items.FindByValue(value).Selected
             //ddlGenreAddBook.Items[0].Selected=true;
-            txtBookCode.Text="";               
+            txtBookCodeAdd.Text="";               
         }
 
         protected void gdvAddedBook_RowCommand1(object sender, GridViewCommandEventArgs e)
         {
             string command = e.CommandName;
             viewBookId = int.Parse(e.CommandArgument.ToString());
-            lblMyLabel.Text = viewBookId.ToString();
-            lblDeleteBookId.Text = viewBookId.ToString();
             //lblDeleteBookId.Visible = false;
+            if(command== "DeleteBook")
+            {
+                ScriptManager.RegisterStartupScript(this, this.GetType(), "Your Comment", "$('#appDeleteBook').modal('show');", true);
+            }
+            else if (command == "EditBook")
+            {
+                EditBook book = new EditBook(viewBookId);
+                DataTable bookData= book.GetBookData();
+                if(book.Errors.Count==0)
+                {
+                    //book_name, author, book_code, Genres.genre 
+                    txtBookNameEdit.Text = bookData.Rows[0][0].ToString();
+                    txtAuthorNameEdit.Text = bookData.Rows[0][1].ToString();
+                    txtBookCodeEdit.Text = bookData.Rows[0][2].ToString();
+                    ddlGenreEdit.Text= bookData.Rows[0][3].ToString();
+                    ScriptManager.RegisterStartupScript(this, this.GetType(), "Your Comment", "$('#appEditBook').modal('show');", true);
+                }
+                else
+                {
+                    lblMyLabel.Text =string.Join("<br/>", book.Errors.ToString());
+                }
+            }
 
-            ScriptManager.RegisterStartupScript(this, this.GetType(), "Your Comment", "$('#appDeleteBook').modal('show');;", true);
         }
 
         protected void btnDelete_Click(object sender, EventArgs e)
@@ -152,6 +179,35 @@ namespace ELibrary2.LibraryAccount
             deleteBook.Delete();
             lblDeleteBookId.Text = $"viewBookId={viewBookId}";//string.Join(" ", deleteBook.Errors);
 
+            SetAddedBook();
+        }
+
+        protected void btnEditBook_Click(object sender, EventArgs e)
+        {
+            int userId = 4;//int.Parse(Session["UserId"].ToString());
+            string bookName = txtBookNameEdit.Text;
+            string authorName = txtAuthorNameEdit.Text;
+            string genre = ddlGenreEdit.SelectedValue;
+            string bookCode = txtBookCodeEdit.Text;
+            int bookId = viewBookId;
+            EditBook editBook = new EditBook(userId, bookName, authorName, genre, bookCode,bookId);
+
+            editBook.EditBookAtDB();
+
+            if (editBook.Errors.Count == 0)
+            {
+                lblSuccessfulEditBookMessage.Text = "Успешно добавена книга!";
+                lblSuccessfulEditBookMessage.Visible = true;
+                lblFailedEditBookMessage.Visible = false;
+            }
+            else
+            {
+                lblFailedEditBookMessage.Text = string.Join("<br/>", editBook.Errors);
+                lblSuccessfulEditBookMessage.Visible = false;
+                lblFailedEditBookMessage.Visible = true;
+            }
+
+            // ClearAddNewBookData();
             SetAddedBook();
         }
 

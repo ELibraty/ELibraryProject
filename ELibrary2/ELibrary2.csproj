@@ -2949,6 +2949,7 @@
     <Compile Include="LibraryAccount\CSClasses\AddedBookPage\AddBook.cs" />
     <Compile Include="LibraryAccount\CSClasses\AddedBookPage\SearchAddedBook.cs" />
     <Compile Include="LibraryAccount\CSClasses\AddedBookPage\DeleteBook.cs" />
+    <Compile Include="LibraryAccount\CSClasses\AddedBookPage\EditBook.cs" />
     <Compile Include="LibraryAccount\LibraryAccount.Master.cs">
       <DependentUpon>LibraryAccount.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
