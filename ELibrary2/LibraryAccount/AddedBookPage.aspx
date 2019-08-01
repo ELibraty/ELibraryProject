@@ -31,7 +31,6 @@
                         <asp:TextBox ID="txtAutcorNameSearch" runat="server" class="col-3 col-sm-3 col-md-3" placeholder = "Име на автора"></asp:TextBox>
                         <asp:Label Text="" runat="server" class="col-1 col-sm-1 col-md-1"/>
                         <asp:DropDownList ID="ddlGenreSearch" runat="server" class="col-3 col-sm-3 col-md-3">
-                                <asp:ListItem Enabled="true" Text="Жанр" Value="-1"></asp:ListItem>
                         </asp:DropDownList>
                     </div>
                     <div class="row ">
@@ -188,7 +187,7 @@
                         <div class="form-group row">
                             <label class="text-black col-md-3 control-label " for="email">Жанр:*</label>
                             <asp:DropDownList ID="ddlGenreAdd" runat="server" class="col-3 col-sm-3 col-md-3">
-                                <asp:ListItem Enabled="true" Text="Жанр" Value="-1"></asp:ListItem>
+
                             </asp:DropDownList>
                         </div>                               
                     </div>
@@ -221,7 +220,7 @@
 
                     <div class="modal-body scroow">
                         Сигурни ли сте, че искате да изтриите избраната книга?   
-                        <asp:Label Text="" id="lblDeleteBookId" runat="server" />
+                        <asp:Label Visible="false" id="lblDeleteBookId" runat="server" />
                     </div>
 
 
@@ -247,6 +246,8 @@
                     <div class="modal-header">
                         <h4 class="modal-title">
                            Редактиране на книга
+                           <asp:Label id="lblEditBookId" runat="server" Visible="false"></asp:Label>
+
                         </h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
@@ -275,7 +276,7 @@
                         <div class="form-group row">
                             <label class="text-black col-md-3 control-label" for="email">Жанр:*</label>
                             <asp:DropDownList ID="ddlGenreEdit" runat="server" class="col-3 col-sm-3 col-md-3">
-                                <asp:ListItem Enabled="true" Text="Жанр" Value="-1"></asp:ListItem>
+
                             </asp:DropDownList>
                         </div>                               
                     </div>

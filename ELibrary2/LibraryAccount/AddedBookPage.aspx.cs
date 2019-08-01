@@ -10,42 +10,36 @@ namespace ELibrary2.LibraryAccount
 {
     public partial class WebForm3 : System.Web.UI.Page
     {
-        int countBookAtPage, currentPage = 1, viewBookId=2;
+        int countBookAtPage, currentPage = 1, viewBookId=-2;
 
         protected void Page_Load(object sender, EventArgs e)
         {
-            SetGenreDate();
+            if(ddlGenreAdd.Items.Count==0)SetGenresDate();
             SetAddedBook();
         }
 
-        protected void SetGenreDate()
+        //Set Ganres on ddls
+        protected void SetGenresDate()
         {
             DBClass db = new DBClass();
             string query = $"Select* from Genres order by genre asc;";
             db.SelectQueryFromDB(query);
             DataTable dtbl = db.SelectQueryFromDB(query);
-            ddlGenreAdd.Items.Clear();
-            ddlGenreSearch.Items.Clear();
-            ddlGenreEdit.Items.Clear();
-            ListItem item = new ListItem("Жанр", "Жанр");
-            ddlGenreSearch.Items.Add(item);
-            ddlGenreAdd.Items.Add(item);
-            ddlGenreEdit.Items.Add(item);
-
             for (int i = 0; i < dtbl.Rows.Count; i++)
             {
                 string genreName = dtbl.Rows[i][1].ToString();
-                item = new ListItem(genreName, genreName);
+                ListItem item = new ListItem(genreName, genreName);
                 ddlGenreSearch.Items.Add(item);
                 ddlGenreAdd.Items.Add(item);
                 ddlGenreEdit.Items.Add(item);
             }
         }
 
+        //Set added book at gdvAddedBook
         protected void SetAddedBook()
         {
             DBClass db = new DBClass();
-            int userId = 4;//int.Parse(Session["UserId"].ToString());
+            int userId = int.Parse(Session["UserId"].ToString());
             string bookName = txtBookNameSearch.Text;
             string aucthorName = txtAutcorNameSearch.Text;
             string genre = ddlGenreSearch.SelectedValue;
@@ -86,6 +80,7 @@ namespace ELibrary2.LibraryAccount
 
         }
 
+        //make pages button
         private Button MakeButton(int pageNumber)
         {
             
@@ -99,7 +94,7 @@ namespace ELibrary2.LibraryAccount
         }
 
        
-
+        //Add new Book at DB
         protected void addNewBook_Click(object sender, EventArgs e)
         {
             int userId = int.Parse(Session["UserId"].ToString()) ;
@@ -108,9 +103,7 @@ namespace ELibrary2.LibraryAccount
             string genre = ddlGenreAdd.SelectedValue;
             string bookCode = txtBookCodeAdd.Text;
             AddBook newBook = new AddBook(userId, bookName, authorName, genre, bookCode);
-           
-            newBook.AddNewBook();
-        
+            newBook.AddNewBook();        
             if (newBook.Errors.Count == 0)
             {
                 lblSuccessfulAddBookMessage.Text = "Успешно добавена книга!";
@@ -122,16 +115,11 @@ namespace ELibrary2.LibraryAccount
                 lblFailedAddBookMessage.Text = string.Join("<br/>", newBook.Errors);
                 lblSuccessfulAddBookMessage.Visible = false;
                 lblFailedAddBookMessage.Visible = true;
-            }
-
-            // ClearAddNewBookData();
+            }            
             SetAddedBook();
         }
 
-        protected void newBook_Click(object sender, EventArgs e)
-        {
-           // ClearAddNewBookData();
-        }
+       
 
         private void ClearAddNewBookData()
         {
@@ -142,22 +130,22 @@ namespace ELibrary2.LibraryAccount
             txtBookCodeAdd.Text="";               
         }
 
+        //Edit/Delete's button clicked at gdvAddedBook and  
         protected void gdvAddedBook_RowCommand1(object sender, GridViewCommandEventArgs e)
         {
             string command = e.CommandName;
-            viewBookId = int.Parse(e.CommandArgument.ToString());
-            //lblDeleteBookId.Visible = false;
-            if(command== "DeleteBook")
+            if (command== "DeleteBook")
             {
+                lblDeleteBookId.Text = e.CommandArgument.ToString();
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "Your Comment", "$('#appDeleteBook').modal('show');", true);
             }
             else if (command == "EditBook")
             {
+                lblEditBookId.Text = e.CommandArgument.ToString();
                 EditBook book = new EditBook(viewBookId);
                 DataTable bookData= book.GetBookData();
                 if(book.Errors.Count==0)
                 {
-                    //book_name, author, book_code, Genres.genre 
                     txtBookNameEdit.Text = bookData.Rows[0][0].ToString();
                     txtAuthorNameEdit.Text = bookData.Rows[0][1].ToString();
                     txtBookCodeEdit.Text = bookData.Rows[0][2].ToString();
@@ -172,24 +160,25 @@ namespace ELibrary2.LibraryAccount
 
         }
 
+        //delete Book from DB
         protected void btnDelete_Click(object sender, EventArgs e)
         {
             viewBookId = int.Parse(lblDeleteBookId.Text);
             DeleteBook deleteBook = new DeleteBook(viewBookId);
             deleteBook.Delete();
-            lblDeleteBookId.Text = $"viewBookId={viewBookId}";//string.Join(" ", deleteBook.Errors);
-
+            lblDeleteBookId.Text = $"{viewBookId}";
             SetAddedBook();
         }
 
+        //Edit Book at DB
         protected void btnEditBook_Click(object sender, EventArgs e)
         {
-            int userId = 4;//int.Parse(Session["UserId"].ToString());
+            int userId = int.Parse(Session["UserId"].ToString());
             string bookName = txtBookNameEdit.Text;
             string authorName = txtAuthorNameEdit.Text;
             string genre = ddlGenreEdit.SelectedValue;
             string bookCode = txtBookCodeEdit.Text;
-            int bookId = viewBookId;
+            int bookId = int.Parse(lblEditBookId.Text); 
             EditBook editBook = new EditBook(userId, bookName, authorName, genre, bookCode,bookId);
 
             editBook.EditBookAtDB();
@@ -211,11 +200,13 @@ namespace ELibrary2.LibraryAccount
             SetAddedBook();
         }
 
+        //Search added Book
         protected void btnSearch_Click(object sender, EventArgs e)
         {
             SetAddedBook();
         }   
 
+        //change page and veiw new book
         protected void changePage(object sender, EventArgs e)
         {
             Button button = (Button)sender;

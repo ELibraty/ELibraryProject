@@ -12,22 +12,12 @@ namespace ELibrary2.LibraryAccount
         private string genre, bookCode;
         private List<string> errors;
         private int userId, genreId, bookId;
+
+        //Constructors
         public EditBook(int bookId)
         {
             this.BookId = bookId;
             this.Errors = new List<string>();
-        }
-
-        public DataTable GetBookData()
-        {
-            DBClass db = new DBClass();
-            int bookId = this.BookId;
-            string query = $"Select book_name, author, book_code, Genres.genre " +
-                $"from Books Inner Join Genres On Books.genre_id=Genres.id " +
-                $"WHERE Books.id='{this.BookId}';";
-            DataTable dtbl = db.SelectQueryFromDB(query);
-            if (dtbl.Rows.Count == 0)   this.Errors.Add("Не е намерена такава книга!");
-            return dtbl;
         }
 
         public EditBook(int userId, string bookName, string authorName, string genre, string bookCode, int bookId)
@@ -56,6 +46,21 @@ namespace ELibrary2.LibraryAccount
             }
             else this.Errors.Add("Изберете жанр!");
         }
+
+        //Get Book Data from DB
+        public DataTable GetBookData()
+        {
+            DBClass db = new DBClass();
+            int bookId = this.BookId;
+            string query = $"Select book_name, author, book_code, Genres.genre " +
+                $"from Books Inner Join Genres On Books.genre_id=Genres.id " +
+                $"WHERE Books.id='{this.BookId}';";
+            DataTable dtbl = db.SelectQueryFromDB(query);
+            if (dtbl.Rows.Count == 0)   this.Errors.Add("Не е намерена такава книга!");
+            return dtbl;
+        }
+
+       
 
         public string BookName
         {
@@ -99,6 +104,7 @@ namespace ELibrary2.LibraryAccount
         private int GenreId { get => genreId; set => genreId = value; }
         public int BookId { get => bookId; set => bookId = value; }
 
+        //Check for Dublicate Book at DB
         private void CheckDublicateBook()
         {
             try
@@ -123,6 +129,7 @@ namespace ELibrary2.LibraryAccount
             }
         }
 
+        //Set book's data at DB
         public void EditBookAtDB()
         {
             try
@@ -138,14 +145,13 @@ namespace ELibrary2.LibraryAccount
                     $"SET book_name='{bookName}', author='{authorName}',genre_id='{idGenre}',book_code='{bookCode}'" +
                     $" WHERE id='{id}'";
 
+                this.Errors.Add($"query={query}");
                 db.InsertQueryAtDB(query);
             }
             catch (Exception)
             {
                 this.Errors.Add("Нещо се обърка!");
             }
-
         }
-
     }
 }

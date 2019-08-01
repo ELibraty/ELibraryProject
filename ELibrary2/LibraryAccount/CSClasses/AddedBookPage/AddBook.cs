@@ -12,6 +12,7 @@ namespace ELibrary2.LibraryAccount
         private string genre, bookCode;
         private List<string> errors;
         private int userId, genreId;
+        //constructor
         public AddBook(int userId, string bookName, string authorName, string genre, string bookCode)
         {
             this.Errors = new List<string>();
@@ -38,6 +39,7 @@ namespace ELibrary2.LibraryAccount
             else this.Errors.Add("Изберете жанр!");
         }
 
+        //capsulation
         public string BookName { get => bookName;
             set{
                 if (value.Length <= 3) this.Errors.Add("Името на книгата трябва да съдържа минимум 3 символа!");
@@ -83,6 +85,7 @@ namespace ELibrary2.LibraryAccount
 
         }
 
+        //Check Dublicate Book at DB
         private void CheckDublicateBook()
         {
             try
@@ -107,6 +110,7 @@ namespace ELibrary2.LibraryAccount
 
         }
 
+        //Add new book at DB
         private void AddNewBookAtDB()
         {
             try

@@ -11,12 +11,15 @@ namespace ELibrary2.LibraryAccount
         private int bookId;
         public int BookId { get => bookId; set => bookId = value; }
         public List<string> Errors { get => errors; set => errors = value; }
+
+        //Constructor
         public DeleteBook(int bookId)
         {
             this.Errors = new List<string>();
             this.BookId = bookId;     
         }
 
+        //Delete book from DB
         public void Delete()
         {
             try
@@ -32,7 +35,5 @@ namespace ELibrary2.LibraryAccount
                 this.Errors.Add("Нещо се обърка!");
             }
         }
-
-
     }
 }

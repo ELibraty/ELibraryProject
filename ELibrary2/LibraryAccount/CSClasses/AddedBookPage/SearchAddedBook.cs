@@ -13,6 +13,8 @@ namespace ELibrary2.LibraryAccount
         private string genre, bookCode, sortMethod;
         private List<string> errors;
         private int userId, genreId, countBookAtPage, currentPage;
+
+        //Constructor
         public SearchAddedBook(int userId, string bookName,
             string authorName, string genre, string bookCode, string sortMethod,
             int currentPage, int countBookAtPage)
@@ -52,6 +54,8 @@ namespace ELibrary2.LibraryAccount
         public int CountBookAtPage { get => countBookAtPage; set => countBookAtPage = value; }
         public int CurrentPage { get => currentPage; set => currentPage = value; }
 
+
+        //Get added books from DB
         public DataTable GetAddedBook()
         {
             DBClass db = new DBClass();
@@ -104,12 +108,12 @@ namespace ELibrary2.LibraryAccount
             return dtbl;
         }
 
+        //Get pages of added books from DB
+
         public int GetPagesOfAddedBook()
         {
             DBClass db = new DBClass();
             int userId = this.UserId;
-            //, ROW_NUMBER() OVER (ORDER BY Name DESC) AS ID
-           
             string query = $"Select COUNT(*) from Books";
             query += $" where library_id='{userId}'";
             if (this.BookName != "") query += $" and book_name LIKE '%{this.BookName}%'";
