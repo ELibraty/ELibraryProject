@@ -1,6 +1,6 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/UserAccount/UserAccount.Master" AutoEventWireup="true" CodeBehind="SearchBookPage.aspx.cs" Inherits="ELibrary2.UserAccount.WebForm2" %>
-<asp:Content ID="Content1" ContentPlaceHolderID="MainContentUserAccount" runat="server">
-     <!-- ***** Dento Dentist Area Start ***** -->
+﻿<%@ Page Title="Търсене на книги" Language="C#" MasterPageFile="~/LibraryAccount/LibraryAccount.Master" AutoEventWireup="true" CodeBehind="WebForm1.aspx.cs" Inherits="ELibrary2.LibraryAccount.WebForm1" %>
+<asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
+    <!-- ***** Dento Dentist Area Start ***** -->
     <section class="dentist-area section-padding-100-0">
     <div class="container">
         <div class="row">

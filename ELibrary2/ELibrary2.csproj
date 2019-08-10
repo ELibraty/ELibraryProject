@@ -180,8 +180,7 @@
     <Content Include="AdminAccount\newWebFormAdmin.aspx" />
     <Content Include="LibraryAccount\IndexLibrary.aspx" />
     <Content Include="LibraryAccount\AddedBookPage.aspx" />
-    <Content Include="UserAccount\SearchBookPage.aspx" />
-    <Content Include="LibraryAccount\newWebForm.aspx" />
+    <Content Include="LibraryAccount\WebForm1.aspx" />
     <Content Include="node_modules\.bin\atob" />
     <Content Include="node_modules\.bin\atob.cmd" />
     <Content Include="node_modules\.bin\color-support" />
@@ -1517,6 +1516,7 @@
     <Content Include="node_modules\xtend\package.json" />
     <Content Include="node_modules\xtend\README.md" />
     <Content Include="UserAccount\indexUser.aspx" />
+    <Content Include="UserAccount\SearchBookPage.aspx" />
     <Content Include="WebForm1.aspx" />
     <Content Include="LibraryAccount\LibraryAccount.Master" />
     <Content Include="AdminAccount\AdminAccount.Master" />
@@ -2936,6 +2936,7 @@
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
+    <Compile Include="CSClasses\Email.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -2972,20 +2973,14 @@
       <DependentUpon>AddedBookPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="CSClasses\User.cs" />
-    <Compile Include="UserAccount\SearchBookPage.aspx.cs">
-      <DependentUpon>SearchBookPage.aspx</DependentUpon>
+    <Compile Include="LibraryAccount\WebForm1.aspx.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="UserAccount\SearchBookPage.aspx.designer.cs">
-      <DependentUpon>SearchBookPage.aspx</DependentUpon>
+    <Compile Include="LibraryAccount\WebForm1.aspx.designer.cs">
+      <DependentUpon>WebForm1.aspx</DependentUpon>
     </Compile>
-    <Compile Include="LibraryAccount\newWebForm.aspx.cs">
-      <DependentUpon>newWebForm.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="LibraryAccount\newWebForm.aspx.designer.cs">
-      <DependentUpon>newWebForm.aspx</DependentUpon>
-    </Compile>
+    <Compile Include="UserAccount\CSClasses\SearchBook.cs" />
     <Compile Include="CSClasses\LogIn.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="CSClasses\SingUp.cs" />
@@ -3023,6 +3018,13 @@
     </Compile>
     <Compile Include="UserAccount\indexUser.aspx.designer.cs">
       <DependentUpon>indexUser.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="UserAccount\SearchBookPage.aspx.cs">
+      <DependentUpon>SearchBookPage.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="UserAccount\SearchBookPage.aspx.designer.cs">
+      <DependentUpon>SearchBookPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="ViewSwitcher.ascx.cs">
       <DependentUpon>ViewSwitcher.ascx</DependentUpon>

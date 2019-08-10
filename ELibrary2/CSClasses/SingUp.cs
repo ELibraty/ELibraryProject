@@ -85,9 +85,16 @@ namespace ELibrary2
                     {
                         //add user at db
                         string query = $"INSERT INTO Users (id,email, user_name, password, type, avatar) " +
-                        $"VALUES ('{id}','{email}', '{userName}', '{password}','{type}', ' ' )";
-                      
+                        $"VALUES ('{id}','{email}', '{userName}', '{password}','{type }', ' ' )";                      
                         db.InsertQueryAtDB(query);
+
+                        Email sendMail = new Email();
+                        string message = "Вие се регистрахте успешно в системата на ELibrary";
+                        message += "Вашето потребителско име:" + userName;
+                        message += "Вашета парола:" + password;
+                        message += "Вие сте регистриран като:" + type;
+
+                        sendMail.Send(email,message, "Успешна регистрация в ELibrary");
                     }
                 }
                 else

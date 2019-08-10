@@ -31,6 +31,7 @@
         </div>
 
         <!-- ***** Header Area Start ***** -->
+        <!-- ***** Header Area Start ***** -->
         <header class="header-area">
         <!-- Main Header Start -->
         <div class="main-header-area">
@@ -58,36 +59,26 @@
                     <!-- Nav Start -->
                     <div class="classynav">
                     <ul id="nav">
-                        <li><a href="index.html">Home</a></li>
-                        <li><a href="#">Pages</a>
+                        <li>
+                          <div class="input-group">
+                              <asp:TextBox runat="server" placeholder="Търсене"/>
+                            <div class="input-group-prepend">
+                                <asp:Button Text="Търсене" runat="server" class="btn btn-primary btn-block col-md-3"  id="btnSearch" OnClick="btnSearch_Click"/>
+
+                            </div>
+                          </div>
+
+                        </li>
+                        <li><a href="IndexAccount.aspx">Начало</a></li>
+                        <li><a href="#">Информация</a>
                         <ul class="dropdown">
-                            <li><a href="index.html">- Home</a></li>
-                            <li><a href="about.html">- About Us</a></li>
-                            <li><a href="service.html">- Service</a></li>
-                            <li><a href="pricing.html">- Pricing</a></li>
-                            <li><a href="blog.html">- Blog</a></li>
-                            <li><a href="blog-details.html">- Blog Details</a></li>
-                            <li><a href="contact.html">- Contact</a></li>
-                            <li><a href="#">- Dropdown</a>
-                            <ul class="dropdown">
-                                <li><a href="#">- Dropdown Item</a></li>
-                                <li><a href="#">- Dropdown Item</a>
-                                <ul class="dropdown">
-                                    <li><a href="#">- Even Dropdown</a></li>
-                                    <li><a href="#">- Even Dropdown</a></li>
-                                    <li><a href="#">- Even Dropdown</a></li>
-                                    <li><a href="#">- Even Dropdown</a></li>
-                                </ul>
-                                </li>
-                                <li><a href="#">- Dropdown Item</a></li>
-                                <li><a href="#">- Dropdown Item</a></li>
-                            </ul>
+                           
+                            <li> <a href="AddedBookPage.aspx" runat="server">Добавени Книги</a>
                             </li>
                         </ul>
                         </li>
                         <li><a href="about.html">About</a></li>
                         <li><a href="service.html">Service</a></li>
-                        <li><a href="pricing.html">Pricing</a></li>
                         <li><a href="#"><asp:Label ID="lblUserName" runat="server"></asp:Label></a>
                         <ul class="dropdown">                
                             <li><a href="blog-details.html">Профил</a></li> 

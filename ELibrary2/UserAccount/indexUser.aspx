@@ -12,8 +12,6 @@
             </div>
         </div>
         </div>
-    
-
 
         <div class="row">
             <!-- Single Dentist Area -->
@@ -24,7 +22,7 @@
                     <!-- Dentist Info -->
 
                     <div class="dentist-info bg-gradient-overlay">
-                    <h5>Общ брой книги</h5>
+                    <h5>Брой прочетени книги</h5>
                     <p>Implant Expert</p>
                     </div>
                 </div>
