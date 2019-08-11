@@ -180,7 +180,7 @@
     <Content Include="AdminAccount\newWebFormAdmin.aspx" />
     <Content Include="LibraryAccount\IndexLibrary.aspx" />
     <Content Include="LibraryAccount\AddedBookPage.aspx" />
-    <Content Include="LibraryAccount\WebForm1.aspx" />
+    <Content Include="LibraryAccount\GetAndReturnBookPage.aspx" />
     <Content Include="node_modules\.bin\atob" />
     <Content Include="node_modules\.bin\atob.cmd" />
     <Content Include="node_modules\.bin\color-support" />
@@ -2973,12 +2973,12 @@
       <DependentUpon>AddedBookPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="CSClasses\User.cs" />
-    <Compile Include="LibraryAccount\WebForm1.aspx.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="LibraryAccount\GetAndReturnBookPage.aspx.cs">
+      <DependentUpon>GetAndReturnBookPage.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="LibraryAccount\WebForm1.aspx.designer.cs">
-      <DependentUpon>WebForm1.aspx</DependentUpon>
+    <Compile Include="LibraryAccount\GetAndReturnBookPage.aspx.designer.cs">
+      <DependentUpon>GetAndReturnBookPage.aspx</DependentUpon>
     </Compile>
     <Compile Include="UserAccount\CSClasses\SearchBook.cs" />
     <Compile Include="CSClasses\LogIn.cs" />

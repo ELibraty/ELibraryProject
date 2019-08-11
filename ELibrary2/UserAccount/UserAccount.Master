@@ -63,7 +63,7 @@
                           <div class="input-group">
                               <asp:TextBox runat="server" placeholder="Търсене"/>
                             <div class="input-group-prepend">
-                                <asp:Button Text="Търсене" runat="server" class="btn btn-primary btn-block col-md-3"  id="btnSearch" OnClick="btnSearch_Click"/>
+                               <asp:Button Text="Търсене" runat="server" class="btn btn-primary btn-block col-md-3"  id="btnSearch" OnClick="btnSearch_Click"/>
 
                             </div>
                           </div>
