@@ -21,6 +21,10 @@ namespace ELibrary2.LibraryAccount
         //Set Ganres on ddls
         protected void SetGenresDate()
         {
+            ListItem item = new ListItem("Жанр", "Жанр");
+            ddlGenreSearch.Items.Add(item);
+            ddlGenreAdd.Items.Add(item);
+            ddlGenreEdit.Items.Add(item);
             DBClass db = new DBClass();
             string query = $"Select* from Genres order by genre asc;";
             db.SelectQueryFromDB(query);
@@ -28,7 +32,7 @@ namespace ELibrary2.LibraryAccount
             for (int i = 0; i < dtbl.Rows.Count; i++)
             {
                 string genreName = dtbl.Rows[i][1].ToString();
-                ListItem item = new ListItem(genreName, genreName);
+                item = new ListItem(genreName, genreName);
                 ddlGenreSearch.Items.Add(item);
                 ddlGenreAdd.Items.Add(item);
                 ddlGenreEdit.Items.Add(item);
@@ -47,6 +51,7 @@ namespace ELibrary2.LibraryAccount
             string sortMethod = ddlSortAddedBook.SelectedValue;
 
             countBookAtPage = int.Parse(ddlCountBookAtPage.SelectedValue);
+
             SearchAddedBook searchAddedBook = new SearchAddedBook(userId, bookName, aucthorName, genre, bookCode, sortMethod, currentPage, countBookAtPage);
             DataTable dtbl = searchAddedBook.GetAddedBook();
             gdvAddedBook.DataSource = dtbl;
@@ -64,8 +69,6 @@ namespace ELibrary2.LibraryAccount
                 }
                 Button button = MakeButton(i);
                 pnhPages.Controls.Add(button);
-
-
             }
             if (flag == true)
             {
@@ -83,7 +86,6 @@ namespace ELibrary2.LibraryAccount
         //make pages button
         private Button MakeButton(int pageNumber)
         {
-            
             Button button = new Button();
             button.Click += new EventHandler(changePage);
             button.Text += pageNumber.ToString();

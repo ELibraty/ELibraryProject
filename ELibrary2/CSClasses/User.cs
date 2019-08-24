@@ -24,9 +24,9 @@ namespace ELibrary2
             this.UserName = dtbl.Rows[0][2].ToString();
         }
 
-        public int Id { get => id; set => id = value; }
-        public string UserName { get => userName; set => userName = value; }
-        public string Email { get => email; set => email = value; }
-        public string Avatar { get => avatar; set => avatar = value; }
+        public int Id { get => id; private set => id = value; }
+        public string UserName { get => userName; private set => userName = value; }
+        public string Email { get => email; private set => email = value; }
+        public string Avatar { get => avatar; private set => avatar = value; }
     }
 }

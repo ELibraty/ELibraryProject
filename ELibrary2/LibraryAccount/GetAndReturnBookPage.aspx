@@ -65,7 +65,7 @@
                     <div class="row ">
                         <asp:Button ID="btnSearch" runat="server" Text="Tърсене" class="btn btn-primary btn-block col-md-3"/>
                  
-                        <button type="button" class="btn btn-primary btn-block col-md-3"  data-toggle="modal"  data-target="#appAddNewBook">Добавяна на нова книга</button>
+                        <button type="button" class="btn btn-primary btn-block col-md-3"  data-toggle="modal"  data-target="#appGetBookForReading">Предоставяне на книга за четене</button>
                     </div>                      
                  </div>
             </div>
@@ -149,51 +149,39 @@
     </asp:UpdatePanel>
 
     <!-- ***** Blog Message Start ***** -->
-    <!-- ***** Add Book ***** --
+    <!-- ***** Get Book for Reading***** -->
     <div class="container">
-    <div class="modal fade" id="appAddNewBook" role="dialog">
+    <div class="modal fade" id="appGetBookForReading" role="dialog">
         <asp:UpdatePanel ID="UpdatePanel1" runat="server">
             <ContentTemplate>
                 <div class="modal-dialog modal-lg">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h4 class="modal-title">
-                            Добавяне на нова книга
+                            Предоставяне на книга за четене
                         </h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                     </div>
 
                     <div class="modal-body scroow">
                         <div class="form-group row">
-                            <asp:Label class="col-md-12" id="lblFailedAddBookMessage" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
-                            <asp:Label class="col-md-12" id="lblSuccessfulAddBookMessage" runat="server" Text="" ForeColor="Green" Visible="false"></asp:Label>
+                            <asp:Label class="col-md-12" id="lblFailedGetBookMessage" runat="server" Text="" ForeColor="Red" Visible="false"></asp:Label>
+                            <asp:Label class="col-md-12" id="lblSuccessfulGetBookMessage" runat="server" Text="" ForeColor="Green" Visible="false"></asp:Label>
                         </div>
 
                         <div class="form-group row">
-                            <label class="text-black col-md-3 control-label ">Код на книгата:*</label>
-                            <asp:TextBox id="txtBookCodeAdd"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
+                            <label class="text-black col-md-3 control-label ">Потребителско име на читетеля:*</label>
+                            <asp:TextBox id="txtUserReaderName"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
                         </div>
                            
                         <div class="form-group row">
                             <label class="text-black col-md-3 control-label ">Име на книгата:*</label>
-                            <asp:TextBox id="txtBookNameAdd"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
-                        </div>
-
-                        <div class="form-group row">
-                            <label class="text-black col-md-3 control-label ">Име на автора:*</label>
-                            <asp:TextBox id="txtAuthorNameAdd"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
-                        </div>                            
-
-                        <div class="form-group row">
-                            <label class="text-black col-md-3 control-label " for="email">Жанр:*</label>
-                            <asp:DropDownList ID="ddlGenreAdd" runat="server" class="col-3 col-sm-3 col-md-3">
-
-                            </asp:DropDownList>
-                        </div>                               
+                            <asp:TextBox id="txtBookReaderName"  type="text" class="form-control col-md-8" runat="server"></asp:TextBox>
+                        </div>                           
                     </div>
 
                     <div class="modal-footer container">
-                        <asp:Button ID="addNewBook" runat="server" Text="Добави книгата" class="btn btn-primary btn-block col-md-3" />
+                        <asp:Button ID="GetBook" runat="server" Text="Добавяне" class="btn btn-primary btn-block col-md-3" OnClick="GetBook_Click" />
                     </div>
                 </div>                    
             </div>
@@ -201,5 +189,5 @@
         </asp:UpdatePanel>
         </div>
     </div>
-    <!-- ***** Add Book END***** -->
+    <!-- ***** Get Book for Reading END***** -->
 </asp:Content>

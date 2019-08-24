@@ -17,7 +17,7 @@ namespace ELibrary2
         public string Password
         {
             get => password;
-            set
+            private set
             {
                 string pattern = "^.*(?=.{8,})(?=.*[a-z])(?=.*[A-Z])(?=.*[!*@#$%^&+=]).*$";
                 //checked lenght and letter at password
@@ -35,7 +35,7 @@ namespace ELibrary2
         public string Email
         {
             get => email;
-            set
+            private set
             {
                 string pattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
                 //validation email
@@ -44,9 +44,9 @@ namespace ELibrary2
             }
         }
 
-        public string ConfirmPasswords { get => confirmPasswords; set => confirmPasswords = value; }
-        public string Type { get => type; set => type = value; }
-        public List<string> Errors { get => errors; set => errors = value; }
+        public string ConfirmPasswords { get => confirmPasswords; private set => confirmPasswords = value; }
+        public string Type { get => type; private set => type = value; }
+        public List<string> Errors { get => errors; private set => errors = value; }
 
         //class contructor
         public SingUp(string userName, string password, string confirmPasswords, string email, string type)

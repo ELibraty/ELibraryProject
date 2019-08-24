@@ -43,16 +43,16 @@ namespace ELibrary2.LibraryAccount
             else this.GenreId = -1;
         }
 
-        public string BookName { get => bookName; set => bookName = value; }
-        public string Genre { get => genre; set => genre = value; }
-        public string AuthorName { get => authorName; set => authorName = value; }
+        public string BookName { get => bookName; private set => bookName = value; }
+        public string Genre { get => genre; private set => genre = value; }
+        public string AuthorName { get => authorName; private set => authorName = value; }
         public List<string> Errors { get => errors; private set => errors = value; }
         private int UserId { get => userId; set => userId = value; }
-        public string BookCode { get => bookCode; set => bookCode = value; }
+        public string BookCode { get => bookCode; private set => bookCode = value; }
         private int GenreId { get => genreId; set => genreId = value; }
-        public string SortMethod { get => sortMethod; set => sortMethod = value; }
-        public int CountBookAtPage { get => countBookAtPage; set => countBookAtPage = value; }
-        public int CurrentPage { get => currentPage; set => currentPage = value; }
+        public string SortMethod { get => sortMethod; private set => sortMethod = value; }
+        public int CountBookAtPage { get => countBookAtPage; private set => countBookAtPage = value; }
+        public int CurrentPage { get => currentPage; private set => currentPage = value; }
 
 
         //Get added books from DB
@@ -94,10 +94,10 @@ namespace ELibrary2.LibraryAccount
 
             string allQuery = $" WITH MyCte AS ({query}) ";
             allQuery += $"SELECT *";
-            allQuery += " FROM MyCte";
-            allQuery += $" WHERE counter >{rowFrom} and counter <={rowTo};";
+            allQuery += " FROM MyCte ";
+            allQuery += $"WHERE counter >{rowFrom} and counter <={rowTo};";
             DataTable dtbl = db.SelectQueryFromDB(allQuery);
-            if(dtbl.Rows.Count==0)
+            if (dtbl.Rows.Count==0)
             {
                 
                 DataRow dataRow= dtbl.NewRow();

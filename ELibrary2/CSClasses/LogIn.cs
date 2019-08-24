@@ -24,7 +24,7 @@ namespace ELibrary2
         public string Password
         {
             get => password;
-            set
+            private set
             {
                 using (MD5 md5Hash = MD5.Create())
                 {
@@ -33,12 +33,12 @@ namespace ELibrary2
             }
         }
 
-        public List<string> Errors { get => errors; set => errors = value; }
+        public List<string> Errors { get => errors; private set => errors = value; }
 
         public string Email
         {
             get => email;
-            set
+            private set
             {
                 string pattern = "^([0-9a-zA-Z]([-\\.\\w]*[0-9a-zA-Z])*@([0-9a-zA-Z][-\\w]*[0-9a-zA-Z]\\.)+[a-zA-Z]{2,9})$";
                 //validation email

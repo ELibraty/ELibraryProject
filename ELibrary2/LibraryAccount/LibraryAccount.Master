@@ -61,7 +61,11 @@
                         <li><a href="#">Информация</a>
                         <ul class="dropdown">
                            
-                            <li> <asp:LinkButton href="AddedBookPage.aspx" runat="server">Добавени Книги</asp:LinkButton>
+                            <li>
+                                <asp:LinkButton href="AddedBookPage.aspx" runat="server">Добавени книги</asp:LinkButton>
+                            </li>
+                            <li> 
+                                <asp:LinkButton href="GetAndReturnBookPage.aspx" runat="server">Даване на книги за четене</asp:LinkButton>
                             </li>
                         </ul>
                         </li>

@@ -65,7 +65,7 @@ namespace ELibrary2.LibraryAccount
         public string BookName
         {
             get => bookName;
-            set
+            private set
             {
                 if (value.Length <= 3) this.Errors.Add("Името на книгата трябва да съдържа минимум 3 символа!");
                 bookName = value;
@@ -75,7 +75,7 @@ namespace ELibrary2.LibraryAccount
         public string Genre
         {
             get => genre;
-            set
+            private set
             {
                 //if (value.Length < 1) this.Errors.Add("Моля изберете жанр!");
                 genre = value;
@@ -84,7 +84,7 @@ namespace ELibrary2.LibraryAccount
         public string AuthorName
         {
             get => authorName;
-            set
+            private  set
             {
                 if (value.Length <= 3) this.Errors.Add("Името на автора трябва да съдържа минимум 3 символа!");
                 authorName = value;
@@ -95,14 +95,14 @@ namespace ELibrary2.LibraryAccount
         public string BookCode
         {
             get => bookCode;
-            set
+            private set
             {
                 if (value.Length <= 3) this.Errors.Add("Кода на книгата трябва да съдържа минимум 3 символа!");
                 bookCode = value;
             }
         }
         private int GenreId { get => genreId; set => genreId = value; }
-        public int BookId { get => bookId; set => bookId = value; }
+        public int BookId { get => bookId; private set => bookId = value; }
 
         //Check for Dublicate Book at DB
         private void CheckDublicateBook()

@@ -11,7 +11,7 @@ namespace ELibrary2.LibraryAccount
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-           /* if (Session["UserId"] != null)
+            if (Session["UserId"] != null)
             {
                 int userId = int.Parse((string)Session["UserId"]);
                 User user = new User(userId);
@@ -28,7 +28,7 @@ namespace ELibrary2.LibraryAccount
                     throw;
                 }
                 Response.Redirect("../Default.aspx");
-            }*/
+            }
         }
 
         protected void btnLogOut_Click(object sender, EventArgs e)

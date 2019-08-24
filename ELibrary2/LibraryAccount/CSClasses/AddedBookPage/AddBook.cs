@@ -41,20 +41,23 @@ namespace ELibrary2.LibraryAccount
 
         //capsulation
         public string BookName { get => bookName;
-            set{
+            private set
+            {
                 if (value.Length <= 3) this.Errors.Add("Името на книгата трябва да съдържа минимум 3 символа!");
                 bookName = value;
                 
             }
         }
         public string Genre { get => genre;
-            set{
+            private set
+            {
                 //if (value.Length < 1) this.Errors.Add("Моля изберете жанр!");
                 genre = value;
             }
         }
         public string AuthorName { get => authorName;
-            set{
+            private set
+            {
                 if (value.Length <= 3) this.Errors.Add("Името на автора трябва да съдържа минимум 3 символа!");
                 authorName = value;
             }
@@ -62,7 +65,8 @@ namespace ELibrary2.LibraryAccount
         public List<string> Errors { get => errors; private set => errors = value; }
         private int UserId { get => userId; set => userId = value; }
         public string BookCode { get => bookCode;
-            set{
+            private set
+            {
                 if (value.Length <= 3) this.Errors.Add("Кода на книгата трябва да съдържа минимум 3 символа!");
                 bookCode = value;
             }
@@ -96,7 +100,7 @@ namespace ELibrary2.LibraryAccount
                 DBClass db = new DBClass();
                 int idGenre = this.GenreId;
                 int id = db.GetMaxID("Books");
-                string bookCode = this.bookCode;
+                string bookCode = this.BookCode;
                 //add book at db
                 string query = $"Select* from Books  Where library_id='{this.UserId}' and " +
                     $"book_name='{this.BookName}' and  author='{authorName}' and book_code='{this.BookCode}';";
@@ -121,10 +125,11 @@ namespace ELibrary2.LibraryAccount
                 DBClass db = new DBClass();
                 int idGenre = this.GenreId;
                 int id = db.GetMaxID("Books");
-                string bookCode = this.bookCode;
+                string bookCode = this.BookCode;
+                DateTime date = DateTime.Now;
                 //add book at db
-                string query = $"INSERT INTO Books (id,library_id, book_name, author, genre_id,book_code) " +
-                $"VALUES ('{id}','{this.UserId}', '{bookName}', '{authorName}','{idGenre}','{bookCode}');";
+                string query = $"INSERT INTO Books (id,library_id, book_name, author, genre_id,book_code, date_doing) " +
+                $"VALUES ('{id}','{this.UserId}', '{bookName}', '{authorName}','{idGenre}','{bookCode}','{date}');";
                 //this.Errors.Add($"query insert= {query}");
                 db.InsertQueryAtDB(query);
             }

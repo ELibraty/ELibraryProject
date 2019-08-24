@@ -9,8 +9,8 @@ namespace ELibrary2.LibraryAccount
     {
         private List<string> errors;
         private int bookId;
-        public int BookId { get => bookId; set => bookId = value; }
-        public List<string> Errors { get => errors; set => errors = value; }
+        public int BookId { get => bookId; private set => bookId = value; }
+        public List<string> Errors { get => errors; private set => errors = value; }
 
         //Constructor
         public DeleteBook(int bookId)
